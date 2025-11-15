@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #f8f5f0;
   --foreground: #171717;
 }
 
@@ -12,15 +12,127 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+h1{
+  @apply sm:text-7xl text-4xl;
+  font-weight: 600;
+}
+
+section{
+  @apply lg:px-12 sm:px-6 px-4 ;
+}
+
+
+.animated-button {
+  @apply cursor-pointer  
+         px-2 py-2 rounded-md
+        font-medium relative overflow-hidden max-w-fit;
+}
+
+.button-inner {
+  @apply relative overflow-hidden;
+}
+
+.button-text,
+.button-text-hover {
+  @apply transition-all;
+  transition-duration: 1125ms;
+  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+  margin: 0;
+}
+
+.button-text {
+  @apply relative;
+}
+
+.button-text-hover {
+  @apply absolute left-0;
+  top: 1.75rem; /* approximate top-7 in Tailwind */
+}
+
+.animated-button:hover .button-text {
+  transform: translateY(-1.75rem); /* same as -translate-y-7 */
+}
+
+.animated-button:hover .button-text-hover {
+  top: 0;
+}
+
+.button2 {
+  @apply relative inline-block text-[#090909] font-medium px-4 py-2 
+      rounded-md bg-[#D4DCCF] 
+      transition-all duration-200 ease-in overflow-hidden cursor-pointer z-[1];
+}
+
+.button2:active {
+  color: #666;
+  /* box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff; */
+}
+
+.button2::before,
+.button2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  border-radius: 50%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.25);
+  transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.button2::before {
+  top: 100%;
+  width: 140%;
+  height: 180%;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.button2::after {
+  top: 180%;
+  width: 160%;
+  height: 190%;
+  background-color: #3a3d38;
+}
+
+.button2:hover {
+  @apply text-white border-[#3A3D38];
+}
+
+.button2:hover::before {
+  top: -35%;
+  background-color: #3a3d38;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+.button2:hover::after {
+  top: -45%;
+  background-color: #3a3d38;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+
+
+ #nav-icon4.open span:nth-child(1) {
+    @apply rotate-45 top-[-3px] left-[8px];
+  }
+
+  #nav-icon4.open span:nth-child(2) {
+    @apply w-0 opacity-0;
+  }
+
+  #nav-icon4.open span:nth-child(3) {
+    @apply -rotate-45 top-[39px] left-[8px];
+  }
