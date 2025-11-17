@@ -1,38 +1,39 @@
-// "use client"
-// import { useRef } from "react";
-// import { motion, useScroll, useTransform } from "framer-motion";
+"use client"
+import React, { useRef } from 'react';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
 
-// export default function HiddenText() {
-//   const ref = useRef(null);
-//   const { scrollYProgress } = useScroll({
-//     target: ref,
-//     offset: ["start end", "end start"], // animation triggers when section comes in/out
-//   });
-
-//   const y = useTransform(scrollYProgress, [0, 1], [50, -50]);
-//   const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
-
-//   return (
-//     <section
-//       ref={ref}
-//       style={{ height: "100vh", display: "flex", justifyContent: "center", alignItems: "center" }}
-//     >
-//       <motion.h1 style={{ y, opacity, fontSize: "3rem" }}>
-//         Section Scroll Animation
-//       </motion.h1>
-//     </section>
-//   );
-// }
-
-
-import React from 'react'
+gsap.registerPlugin(ScrollTrigger);
 
 const HiddenText = () => {
+  const containerRef = useRef(null);
+
+  useGSAP(() => {
+    gsap.to(containerRef.current.querySelector('.hiddenText'), {
+      opacity: 1,
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top center",
+        end: "bottom center",
+        scrub: true,
+        pin: true,
+        // pinSpacing: true,
+        // markers: true, // optional, for debugging
+      },
+      ease: "power3.inOut",
+    });
+  });
+
   return (
-    <div className='h-[50vh] bg-green-200 flex items-center justify-center'>
-      <h2>HiddenText</h2>
+    <div
+      ref={containerRef}
+      className='flex items-start justify-center h-[88vh]'
+    >
+      <h1 className='hiddenText opacity-0'>HiddenText</h1>
     </div>
-  )
+  );
 }
 
-export default HiddenText
+export default HiddenText;
+

@@ -31,9 +31,14 @@ h1{
   font-weight: 600;
 }
 
-section{
+/* section{
   @apply lg:px-12 sm:px-6 px-4 ;
+} */
+
+section {
+  @apply px-4 sm:px-6 lg:px-12;
 }
+
 
 
 .animated-button {
