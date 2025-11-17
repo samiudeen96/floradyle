@@ -7,7 +7,7 @@ import Cart from "./Cart";
 
 const Header = () => {
   return (
-    <header className="fixed top-0 left-0 w-full z-50">
+    <header className="sticky top-0 left-0 w-full z-50">
       <section
         className="h-16 lg:px-12 sm:px-6 px-4 grid grid-cols-3 
         items-center justify-between

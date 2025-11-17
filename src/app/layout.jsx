@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
       >
         <LenisProvider>
           <Header />
-          <div className="mt-16">{children}</div>
+          <div>{children}</div>
         </LenisProvider>
       </body>
     </html>
