@@ -13,13 +13,13 @@ const Cart = () => {
   const increase = () => setCount((prev) => prev + 1);
   const decrease = () => setCount((prev) => (prev > 1 ? prev - 1 : 1));
 
-  // useEffect(() => {
-  //   if (isOpen) {
-  //     document.body.style.overflow = "hidden";
-  //   } else {
-  //     document.body.style.overflow = "auto";
-  //   }
-  // }, [isOpen]);
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isOpen]);
 
   // Animation Variants
   const backdrop = {
