@@ -1,5 +1,6 @@
 "use client";
 import Test from "@/components/animations/Test";
+import Logo from "@/components/Logo";
 import { useDeviceType } from "@/hooks/useDeviceType";
 import { useScreenSize } from "@/hooks/useScreenSize";
 import { scrollContent } from "@/utils/constant";
@@ -146,7 +147,7 @@ const Hero = () => {
     <section className="relative">
       {/* ---------------- SECTION 1 ---------------- */}
       {/* <div className="hidden handRef"></div> */}
-      <div className="relative h-[calc(100vh-364px)] w-full bg-amber-200" ref={handRef}>
+      <div className="relative h-[calc(100vh-364px)] w-full bg-red-200" ref={handRef}>
         <h1 className="text1 opacity-0 translate-y-[38vh]">
           Your healthiest <br /> skin revealed.
         </h1>
@@ -208,6 +209,9 @@ const Hero = () => {
       {/* <Test /> */}
 
       {/* <div className="fixed bottom-10 right-10 text-red-800">{device}</div> */}
+
+      <Logo />
+
     </section>
   );
 };
