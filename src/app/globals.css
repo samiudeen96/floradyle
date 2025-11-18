@@ -141,3 +141,14 @@ section {
   #nav-icon4.open span:nth-child(3) {
     @apply -rotate-45 top-[39px] left-[8px];
   }
+
+
+  h1{
+    @apply sm:text-[96px] text-[42px];
+    font-weight: 500;
+  }
+
+  h3{
+    @apply sm:text-[64px] text-[42px];
+    font-weight: 500;
+  }

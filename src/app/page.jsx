@@ -1,5 +1,6 @@
 import ParallaxScroll from "@/components/animations/ParallaxScroll";
 import ParallelScrollToRight from "@/components/animations/ParallaxScrollToRight";
+import Test from "@/components/animations/Test";
 import Hero from "@/components/pages/home/Hero";
 import HiddenText from "@/components/pages/home/HiddenText";
 import Product from "@/components/pages/home/Product";
@@ -13,6 +14,7 @@ export default function Home() {
       <ScrollSection />
       <Product /> */}
       {/* <ParallelScrollToRight  /> */}
+      {/* <Test /> */}
     </div>
   );
 }
