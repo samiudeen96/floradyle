@@ -40,7 +40,7 @@ const HiddenTextReveal = () => {
   }, []);
 
   return (
-    <div className="relative flex items-center justify-center h-[130vh] bg-red-200">
+    <div className="relative flex items-center justify-center h-[150vh]">
       <h3
         ref={containerRef}
         className="leading-[75px] text-center"
