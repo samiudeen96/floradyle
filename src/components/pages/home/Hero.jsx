@@ -15,6 +15,7 @@ const Hero = () => {
   const containerRef = useRef(null);
   const productWrapperRef = useRef(null);
   const scrollRefs = useRef([]);
+  const handRef = useRef(null)
   //  const textRef = useRef(null);
   // const { width } = useScreenSize();
   const device = useDeviceType();
@@ -36,6 +37,9 @@ const Hero = () => {
       .to(".text1", { opacity: 1, delay: 1, ease: "power1.inOut" })
       .to(".text1", { y: 20, duration: 1.3, ease: "power1.inOut" });
 
+
+
+
     // Product initial scroll animation
     gsap.to(productWrapperRef.current, {
       y: 280,
@@ -47,6 +51,25 @@ const Hero = () => {
         scrub: true,
       },
     });
+
+        gsap.to(".hand", {
+        y: 500,
+        // opacity: 0,
+        ease: "power1.inOut",
+        scrollTrigger: {
+        trigger: productWrapperRef.current,
+        start: "top center-=20%",
+        end: "top top",
+        scrub: true,
+
+      },
+    });
+
+
+
+    
+
+
 
     // Hidden text fade in
     // gsap.to(".hiddenText", {
@@ -122,15 +145,16 @@ const Hero = () => {
   return (
     <section className="relative">
       {/* ---------------- SECTION 1 ---------------- */}
-      <div className="relative h-[calc(100vh-364px)] w-full">
+      {/* <div className="hidden handRef"></div> */}
+      <div className="relative h-[calc(100vh-364px)] w-full bg-amber-200" ref={handRef}>
         <h1 className="text1 opacity-0 translate-y-[38vh]">
           Your healthiest <br /> skin revealed.
         </h1>
       </div>
 
       {/* ---------------- SECTION 2 ---------------- */}
-           <div
-        className="flex items-start justify-center h-[5vh] bg-yellow-200"
+      <div
+        className="flex items-start justify-center h-[5vh]"
       >
         <h1 className="hiddenContent opacity-0"></h1>
       </div>
@@ -141,13 +165,27 @@ const Hero = () => {
       <div
         ref={productWrapperRef}
         // className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center flex-col"
       >
-        <Image
+        {/* <div className="relative"> */}
+                  <Image
           src="/products/product2.avif"
           width={340}
           height={340}
           alt="Product"
+        />
+
+        {/* </div> */}
+      </div>
+
+
+      <div  className="fixed bottom-0  flex justify-center items-end left-1/2 -translate-x-1/2">
+          <Image
+          className="mt-20 hand"
+          src="/hand.avif"
+          width={920}
+          height={340}
+          alt="hand"
         />
       </div>
 
