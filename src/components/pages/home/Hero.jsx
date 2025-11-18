@@ -98,7 +98,7 @@ const Hero = () => {
       {/* ---------------- SECTION 2 ---------------- */}
       <div
         ref={containerRef}
-        className="flex items-start justify-center h-[100vh] bg-amber-100"
+        className="flex items-start justify-center sm:h-[100vh] h-[70vh] bg-amber-100"
       >
         <h1 className="hiddenText opacity-0">HiddenText</h1>
       </div>
@@ -121,11 +121,11 @@ const Hero = () => {
       {scrollContent.map((item, index) => (
         <div
           key={index}
-          className="h-screen  flex items-center"
+          className="h-screen  flex sm:items-center"
           ref={addToRefs}
         >
-          <div className="w-11/12 mx-auto">
-            <div className="w-5/12">
+          <div className="sm:w-11/12 mx-auto">
+            <div className="sm:w-5/12">
               <h4>{item.title}</h4>
               <p>{item.content}</p>
             </div>
