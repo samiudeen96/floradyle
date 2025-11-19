@@ -182,9 +182,10 @@ const Hero = () => {
           className="h-screen flex items-center"
           ref={addToRefs}
         >
-          <div className="sm:w-11/12 mx-auto">
-            <div className="sm:w-5/12">
-              <h4>{item.title}</h4>
+          <div className="container">
+            <div className="sm:w-4/12">
+              <div className="bg-[#D4DCCF] text-xs w-fit py-1 px-3 rounded-md">0{index + 1}</div>
+              <h4 className="mt-3 mb-5">{item.title}</h4>
               <p>{item.content}</p>
             </div>
           </div>
@@ -195,7 +196,7 @@ const Hero = () => {
 
       <div className="fixed bottom-10 right-10 text-red-800">{device}</div>
 
-      {/* <Logo /> */}
+      <Logo />
     </section>
   );
 };

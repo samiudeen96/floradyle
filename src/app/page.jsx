@@ -5,11 +5,15 @@ import Hero from "@/components/pages/home/Hero";
 import HiddenText from "@/components/pages/home/HiddenText";
 import Product from "@/components/pages/home/Product";
 import ScrollSection from "@/components/pages/home/ScrollSection";
+import StackedCards from "@/components/pages/home/StackedCards";
+import TextImage from "@/components/pages/home/TextImage";
 
 export default function Home() {
   return (
-    <div className="relative">
-      <Hero />
+    <div className="">
+      {/* <Hero /> */}
+      <StackedCards />
+      <TextImage  /> 
       {/* <HiddenText />
       <ScrollSection />
       <Product /> */}

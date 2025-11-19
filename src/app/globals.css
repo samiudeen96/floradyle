@@ -35,7 +35,7 @@ h1{
   @apply lg:px-12 sm:px-6 px-4 ;
 } */
 
-section {
+.section {
   @apply px-4 sm:px-6 lg:px-12;
 }
 
@@ -143,12 +143,47 @@ section {
   }
 
 
-  h1{
-    @apply sm:text-[96px] text-[42px];
-    font-weight: 500;
+h1 {
+  @apply text-[42px] sm:text-[96px] leading-[48px] sm:leading-[110px];
+  font-weight: 500;
+}
+
+h2 {
+  @apply text-[36px] sm:text-[80px] leading-[42px] sm:leading-[96px];
+  font-weight: 500;
+}
+
+h3 {
+  /* @apply text-[32px] sm:text-[64px] leading-[38px] sm:leading-[80px]; */
+  @apply text-[32px] sm:text-[64px];
+  line-height: 1.1;
+  font-weight: 500;
+}
+
+h4 {
+  @apply text-[28px] sm:text-[50px] leading-[34px] sm:leading-[60px];
+  font-weight: 500;
+}
+
+h5 {
+  @apply text-[24px] sm:text-[36px] leading-[30px] sm:leading-[44px];
+  font-weight: 500;
+}
+
+h6 {
+  @apply text-[20px] sm:text-[28px] leading-[26px] sm:leading-[36px];
+  font-weight: 500;
+}
+
+
+  .container{
+    @apply sm:w-7/12  mx-auto;
   }
 
-  h3{
-    @apply sm:text-[64px] text-[42px];
-    font-weight: 500;
+  .pill{
+    @apply bg-[#D4DCCF] text-xs w-fit py-1 px-3 rounded-md
   }
+
+  .image1 {
+  will-change: transform;
+}

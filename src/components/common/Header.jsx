@@ -1,8 +1,7 @@
-"use client";
 import { menu } from "@/utils/constant";
 import Image from "next/image";
 import React from "react";
-import Cart from "./Cart";
+import Cart from "../Cart";
 import Link from "next/link";
 
 const Header = () => {
@@ -28,6 +27,7 @@ const Header = () => {
         {/* Logo */}
         <Link href={"/"}>
           <Image
+          className="cursor-pointer"
             src="/logo.webp"
             alt="Hero image"
             width={140}
