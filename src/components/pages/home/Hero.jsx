@@ -16,12 +16,11 @@ const Hero = () => {
   const containerRef = useRef(null);
   const productWrapperRef = useRef(null);
   const scrollRefs = useRef([]);
-  const handRef = useRef(null)
+  const handRef = useRef(null);
   //  const textRef = useRef(null);
   // const { width } = useScreenSize();
   const device = useDeviceType();
-// "xs-mobile" / "mobile" / "tablet" / "laptop" / "desktop" / "large-desktop"
-
+  // "xs-mobile" / "mobile" / "tablet" / "laptop" / "desktop" / "large-desktop"
 
   const addToRefs = (el) => {
     if (el && !scrollRefs.current.includes(el)) {
@@ -30,16 +29,12 @@ const Hero = () => {
   };
 
   useGSAP(() => {
-
     // const chars = textRef.current.querySelectorAll("span");
-    
+
     gsap
       .timeline()
       .to(".text1", { opacity: 1, delay: 1, ease: "power1.inOut" })
       .to(".text1", { y: 20, duration: 1.3, ease: "power1.inOut" });
-
-
-
 
     // Product initial scroll animation
     gsap.to(productWrapperRef.current, {
@@ -53,24 +48,17 @@ const Hero = () => {
       },
     });
 
-        gsap.to(".hand", {
-        y: 500,
-        // opacity: 0,
-        ease: "power1.inOut",
-        scrollTrigger: {
+    gsap.to(".hand", {
+      y: 500,
+      // opacity: 0,
+      ease: "power1.inOut",
+      scrollTrigger: {
         trigger: productWrapperRef.current,
         start: "top center-=20%",
         end: "top top",
         scrub: true,
-
       },
     });
-
-
-
-    
-
-
 
     // Hidden text fade in
     // gsap.to(".hiddenText", {
@@ -84,23 +72,23 @@ const Hero = () => {
     //     pinSpacing: true
     //   },
     // });
-// gsap.fromTo(
-//       chars,
-//       { opacity: 0, filter: "blur(8px)" },       // start invisible
-//       {
-//         opacity: 1,
-//         filter: "blur(0px)",      // reveal
-//         stagger: 0.05,      // reveal each char one by one
-//         ease: "power2.out",
-//         scrollTrigger: {
-//           trigger: textRef.current,
-//           start: "top 40%",
-//         end: "bottom top",
-//           scrub: true,       // smooth progress with scroll
-//           pin: true,
-//         },
-//       }
-//     );
+    // gsap.fromTo(
+    //       chars,
+    //       { opacity: 0, filter: "blur(8px)" },       // start invisible
+    //       {
+    //         opacity: 1,
+    //         filter: "blur(0px)",      // reveal
+    //         stagger: 0.05,      // reveal each char one by one
+    //         ease: "power2.out",
+    //         scrollTrigger: {
+    //           trigger: textRef.current,
+    //           start: "top 40%",
+    //         end: "bottom top",
+    //           scrub: true,       // smooth progress with scroll
+    //           pin: true,
+    //         },
+    //       }
+    //     );
 
     // ---------------------------
     // ✔️ Single pin timeline
@@ -109,7 +97,8 @@ const Hero = () => {
       scrollTrigger: {
         trigger: ".hiddenContent",
         start: "top center",
-        end: "bottom+=1700 top",
+        // end: "bottom+=1700 top",
+        end: "bottom+=1000 top",
         scrub: true,
         pin: true,
       },
@@ -140,7 +129,6 @@ const Hero = () => {
     });
   });
 
-
   //  const sentence = "Five proven ingredients that actually work. Less bottles. Better skin. Smarter routine.";
 
   return (
@@ -154,9 +142,7 @@ const Hero = () => {
       </div>
 
       {/* ---------------- SECTION 2 ---------------- */}
-      <div
-        className="flex items-start justify-center h-[5vh]"
-      >
+      <div className="flex items-start justify-center h-[5vh]">
         <h1 className="hiddenContent opacity-0"></h1>
       </div>
 
@@ -169,7 +155,7 @@ const Hero = () => {
         className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center flex-col z-1"
       >
         {/* <div className="relative"> */}
-                  <Image
+        <Image
           src="/products/product2.avif"
           width={340}
           height={340}
@@ -179,9 +165,8 @@ const Hero = () => {
         {/* </div> */}
       </div>
 
-
-      <div  className="fixed bottom-0  flex justify-center items-end left-1/2 -translate-x-1/2 z-1">
-          <Image
+      <div className="fixed bottom-0  flex justify-center items-end left-1/2 -translate-x-1/2 z-1">
+        <Image
           className="mt-20 hand"
           src="/hand.avif"
           width={920}
@@ -194,7 +179,7 @@ const Hero = () => {
       {scrollContent.map((item, index) => (
         <div
           key={index}
-          className="h-screen  flex sm:items-center"
+          className="h-screen flex items-center"
           ref={addToRefs}
         >
           <div className="sm:w-11/12 mx-auto">
@@ -208,16 +193,14 @@ const Hero = () => {
 
       {/* <Test /> */}
 
-      {/* <div className="fixed bottom-10 right-10 text-red-800">{device}</div> */}
+      <div className="fixed bottom-10 right-10 text-red-800">{device}</div>
 
-      <Logo />
-
+      {/* <Logo /> */}
     </section>
   );
 };
 
 export default Hero;
-
 
 // "use client";
 // import { useEffect, useRef } from "react";

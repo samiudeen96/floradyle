@@ -1,9 +1,9 @@
+"use client";
 import { menu } from "@/utils/constant";
 import Image from "next/image";
 import React from "react";
-import Button from "./Button";
-import HamIcon from "./HamIcon";
 import Cart from "./Cart";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -26,19 +26,21 @@ const Header = () => {
         </div>
 
         {/* Logo */}
-        <Image
-          src="/logo.webp"
-          alt="Hero image"
-          width={140}
-          height={50}
-          priority
-        />
+        <Link href={"/"}>
+          <Image
+            src="/logo.webp"
+            alt="Hero image"
+            width={140}
+            height={50}
+            priority
+          />
+        </Link>
 
         {/* Menu */}
         <ul className="sm:flex gap-4 items-center justify-center hidden">
           {menu.map((item, index) => (
             <li key={index}>
-              <Button>{item.label}</Button>
+              <Link href={item.path}>{item.label}</Link>
             </li>
           ))}
         </ul>

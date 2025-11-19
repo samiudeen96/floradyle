@@ -1,12 +1,15 @@
 export const menu = [
   {
     label: "About",
+    path: "/about"
   },
   {
     label: "Journal",
+    path: "/journal"
   },
   {
     label: "Support",
+    path: "/support"
   },
 ];
 
