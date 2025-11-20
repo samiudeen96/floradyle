@@ -13,9 +13,9 @@ import React, { useRef } from "react";
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
-  const containerRef = useRef(null);
+  // const containerRef = useRef(null);
   const productWrapperRef = useRef(null);
-  const scrollRefs = useRef([]);
+  // const scrollRefs = useRef([]);
   const handRef = useRef(null);
   //  const textRef = useRef(null);
   // const { width } = useScreenSize();
@@ -39,34 +39,47 @@ const Hero = () => {
         { opacity: 1, duration: 1, ease: "power1.inOut" }
       )
       .to(".text1", {
-        y: "-25vh", // move to very top
+        y: "-35vh", // move to very top
         duration: 1.4,
         ease: "power1.inOut",
       });
 
     // Product initial scroll animation
-    gsap.to(productWrapperRef.current, {
-      y: 280,
-      ease: "power1.inOut",
-      scrollTrigger: {
-        trigger: productWrapperRef.current,
-        start: "top center-=20%",
-        end: "top top",
-        scrub: true,
-      },
-    });
+gsap.fromTo(
+  productWrapperRef.current,
+  {
+    yPercent: -28, // initially move it up by 50% of its own height (center vertically)
+    xPercent: -50, // center horizontally
+    top: "28%",    // ensure it starts at 50% of parent
+    left: "50%",   // ensure it starts at 50% horizontally
+    position: "absolute", // needed for top/left positioning
+  },
+  {
+   yPercent: 65, 
+    top: "65%",
+    ease: "power1.inOut",
+    scrollTrigger: {
+      trigger: ".heroSec1",
+      start: "top-=128px",
+      end: "bottom center+=200px",
+      scrub: true,
+      markers: true
+    },
+  }
+);
 
-    gsap.to(".hand", {
-      y: 500,
-      // opacity: 0,
-      ease: "power1.inOut",
-      scrollTrigger: {
-        trigger: productWrapperRef.current,
-        start: "top center-=20%",
-        end: "top top",
-        scrub: true,
-      },
-    });
+
+    // gsap.to(".hand", {
+    //   y: 500,
+    //   // opacity: 0,
+    //   ease: "power1.inOut",
+    //   scrollTrigger: {
+    //     trigger: productWrapperRef.current,
+    //     start: "top center-=20%",
+    //     end: "top top",
+    //     scrub: true,
+    //   },
+    // });
 
     // Hidden text fade in
     // gsap.to(".hiddenText", {
@@ -101,40 +114,40 @@ const Hero = () => {
     // ---------------------------
     // ✔️ Single pin timeline
     // ---------------------------
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".hiddenContent",
-        start: "top center",
-        // end: "bottom+=1700 top",
-        end: "bottom+=1000 top",
-        scrub: true,
-        pin: true,
-      },
-    });
+    // const tl = gsap.timeline({
+    //   scrollTrigger: {
+    //     trigger: ".hiddenContent",
+    //     start: "top center",
+    //     // end: "bottom+=1700 top",
+    //     end: "bottom+=1000 top",
+    //     scrub: true,
+    //     pin: true,
+    //   },
+    // });
 
-    tl.to(productWrapperRef.current, {
-      y: 280,
-      duration: 1,
-      ease: "power1.out",
-    });
+    // tl.to(productWrapperRef.current, {
+    //   y: 280,
+    //   duration: 1,
+    //   ease: "power1.out",
+    // });
 
-    tl.to(productWrapperRef.current, {
-      x: 280,
-      y: -50,
-      duration: 2,
-      ease: "power1.in",
-    });
+    // tl.to(productWrapperRef.current, {
+    //   x: 280,
+    //   y: -50,
+    //   duration: 2,
+    //   ease: "power1.in",
+    // });
 
-    // Pin scroll sections
-    scrollRefs.current.forEach((section) => {
-      ScrollTrigger.create({
-        trigger: section,
-        start: "top top",
-        end: "bottom top",
-        pin: true,
-        pinSpacing: true,
-      });
-    });
+    // // Pin scroll sections
+    // scrollRefs.current.forEach((section) => {
+    //   ScrollTrigger.create({
+    //     trigger: section,
+    //     start: "top top",
+    //     end: "bottom top",
+    //     pin: true,
+    //     pinSpacing: true,
+    //   });
+    // });
   });
 
   //  const sentence = "Five proven ingredients that actually work. Less bottles. Better skin. Smarter routine.";
@@ -143,46 +156,41 @@ const Hero = () => {
     <section className="relative">
       {/* ---------------- SECTION 1 ---------------- */}
       {/* <div className="hidden handRef"></div> */}
-      <div className="section">
+      <div className="section z-0 relative heroSec1 bg-amber-300">
         <div
-          className="h-[calc(100vh-64px)] bg-red-200 w-full flex items-center justify-between"
+          className="h-[calc(100vh-64px)] w-full flex items-center justify-between"
           ref={handRef}
         >
           <h1 className="text1 opacity-0">
             Your healthiest <br /> skin revealed.
           </h1>
-
-          <p>Your healthiest</p>
         </div>
       </div>
 
-      {/* ---------------- SECTION 2 ---------------- */}
-      {/* <div className="flex items-start justify-center h-[5vh]">
-        <h1 className="hiddenContent opacity-0"></h1>
-      </div> */}
-
-      {/* <Test /> */}
-
       {/* ---------------- PRODUCT IMAGE ---------------- */}
-      {/* <div
-        ref={productWrapperRef}
-        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center flex-col z-1"
+      <div
+        
+        className="absolute top-0 left-0 z-0  h-[calc(100vh-64px)] w-full"
       >
-        <Image
-          src="/products/product2.avif"
-          width={340}
-          height={340}
+        <div className="relative sm:w-[400px] sm:h-[400px] w-[250px] h-[250px] bg-red-200" ref={productWrapperRef}>
+                  <Image
+        className="object-contain"
+          src="/bottle.png"
+          fill
           alt="Product"
         />
+        </div>
 
-      </div> */}
+      </div>
 
-      {/* <div className="fixed bottom-0  flex justify-center items-end left-1/2 -translate-x-1/2 z-1">
+      <div className=" h-[calc(100vh-64px)]"></div>
+
+      {/* <div className="fixed bottom-0 flex justify-center items-end left-1/2 -translate-x-1/2 z-1">
         <Image
           className="mt-20 hand"
           src="/hand.avif"
-          width={920}
-          height={340}
+          width={900}
+          height={335}
           alt="hand"
         />
       </div> */}

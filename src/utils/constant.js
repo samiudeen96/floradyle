@@ -102,3 +102,43 @@ export const info = [
     subtext:"Lorem Ipsum is simply dummy text of the printing and typesetting industry."
   }
 ]
+
+
+export const review = [
+  {
+      name: "Lorem Ipsum",
+      desc: "typesetting industry",
+      profileImg: "/imageText1.avif",
+      content:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
+  },
+  {
+      name: "Lorem Ipsum",
+      desc: "typesetting industry",
+      profileImg: "/imageText2.avif",
+      content:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
+  },
+  {
+      name: "Lorem Ipsum",
+      desc: "typesetting industry",
+      profileImg: "/imageText1.avif",
+      content:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
+  },
+    {
+      name: "Lorem Ipsum",
+      desc: "typesetting industry",
+      profileImg: "/imageText1.avif",
+      content:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
+  },
+  {
+      name: "Lorem Ipsum",
+      desc: "typesetting industry",
+      profileImg: "/imageText2.avif",
+      content:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
+  },
+  {
+      name: "Lorem Ipsum",
+      desc: "typesetting industry",
+      profileImg: "/imageText1.avif",
+      content:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
+  }
+]
