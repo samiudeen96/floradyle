@@ -11,9 +11,9 @@ import TextImage from "@/components/pages/home/TextImage";
 export default function Home() {
   return (
     <div className="">
-      {/* <Hero /> */}
-      <StackedCards />
-      <TextImage  /> 
+      <Hero />
+      {/* <StackedCards />
+      <TextImage  />  */}
       {/* <HiddenText />
       <ScrollSection />
       <Product /> */}

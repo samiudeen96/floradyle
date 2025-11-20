@@ -33,8 +33,16 @@ const Hero = () => {
 
     gsap
       .timeline()
-      .to(".text1", { opacity: 1, delay: 1, ease: "power1.inOut" })
-      .to(".text1", { y: 20, duration: 1.3, ease: "power1.inOut" });
+      .fromTo(
+        ".text1",
+        { opacity: 0, y: "0%" }, // start centered
+        { opacity: 1, duration: 1, ease: "power1.inOut" }
+      )
+      .to(".text1", {
+        y: "-25vh", // move to very top
+        duration: 1.4,
+        ease: "power1.inOut",
+      });
 
     // Product initial scroll animation
     gsap.to(productWrapperRef.current, {
@@ -135,26 +143,31 @@ const Hero = () => {
     <section className="relative">
       {/* ---------------- SECTION 1 ---------------- */}
       {/* <div className="hidden handRef"></div> */}
-      <div className="relative h-[calc(100vh-364px)] w-full" ref={handRef}>
-        <h1 className="text1 opacity-0 translate-y-[38vh]">
-          Your healthiest <br /> skin revealed.
-        </h1>
+      <div className="section">
+        <div
+          className="h-[calc(100vh-64px)] bg-red-200 w-full flex items-center justify-between"
+          ref={handRef}
+        >
+          <h1 className="text1 opacity-0">
+            Your healthiest <br /> skin revealed.
+          </h1>
+
+          <p>Your healthiest</p>
+        </div>
       </div>
 
       {/* ---------------- SECTION 2 ---------------- */}
-      <div className="flex items-start justify-center h-[5vh]">
+      {/* <div className="flex items-start justify-center h-[5vh]">
         <h1 className="hiddenContent opacity-0"></h1>
-      </div>
+      </div> */}
 
-      <Test />
+      {/* <Test /> */}
 
       {/* ---------------- PRODUCT IMAGE ---------------- */}
-      <div
+      {/* <div
         ref={productWrapperRef}
-        // className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
         className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center flex-col z-1"
       >
-        {/* <div className="relative"> */}
         <Image
           src="/products/product2.avif"
           width={340}
@@ -162,10 +175,9 @@ const Hero = () => {
           alt="Product"
         />
 
-        {/* </div> */}
-      </div>
+      </div> */}
 
-      <div className="fixed bottom-0  flex justify-center items-end left-1/2 -translate-x-1/2 z-1">
+      {/* <div className="fixed bottom-0  flex justify-center items-end left-1/2 -translate-x-1/2 z-1">
         <Image
           className="mt-20 hand"
           src="/hand.avif"
@@ -173,10 +185,10 @@ const Hero = () => {
           height={340}
           alt="hand"
         />
-      </div>
+      </div> */}
 
       {/* ---------------- SCROLL SECTIONS ---------------- */}
-      {scrollContent.map((item, index) => (
+      {/* {scrollContent.map((item, index) => (
         <div
           key={index}
           className="h-screen flex items-center"
@@ -190,226 +202,15 @@ const Hero = () => {
             </div>
           </div>
         </div>
-      ))}
+      ))} */}
 
       {/* <Test /> */}
 
       <div className="fixed bottom-10 right-10 text-red-800">{device}</div>
 
-      <Logo />
+      {/* <Logo /> */}
     </section>
   );
 };
 
 export default Hero;
-
-// "use client";
-// import { useEffect, useRef } from "react";
-// import { scrollContent } from "@/utils/constant";
-// import gsap from "gsap";
-// import { ScrollTrigger } from "gsap/all";
-// import Image from "next/image";
-
-// gsap.registerPlugin(ScrollTrigger);
-
-// const Hero = () => {
-//   const productRef = useRef(null);
-//   const text1Ref = useRef(null);
-//   const hiddenContent = useRef(null);
-//   const hiddenText = useRef(null);
-//   const sectionsRef = useRef([]);
-
-//   const addSectionRef = (el) => {
-//     if (el && !sectionsRef.current.includes(el)) sectionsRef.current.push(el);
-//   };
-
-//   // useEffect(() => {
-//   //   if (!productRef.current) return;
-
-//   //   // ---------------- GSAP MATCH MEDIA ----------------
-//   //   const mm = gsap.matchMedia();
-
-//   //   // MOBILE
-//   //   mm.add("(max-width: 640px)", () => {
-//   //     const tl = gsap.timeline({
-//   //       scrollTrigger: {
-//   //         trigger: hiddenTextRef.current,
-//   //         start: "top top",
-//   //         end: "bottom+=500 top+=40%",
-//   //         scrub: true,
-//   //         pin: true,
-//   //       },
-//   //     });
-
-//   //     tl.to(productRef.current, { y: 240, duration: 1, ease: "power1.out" })
-//   //       .to(productRef.current, { x: 0, y: 250, duration: 2, ease: "power1.in" });
-
-//   //     gsap.timeline()
-//   //       .to(text1Ref.current, { opacity: 1, delay: 0.5, ease: "power1.inOut" })
-//   //       .to(text1Ref.current, { y: 20, duration: 1.3, ease: "power1.inOut" });
-
-//   //     gsap.to(hiddenTextRef.current, {
-//   //       opacity: 1,
-//   //       scrollTrigger: {
-//   //         trigger: hiddenTextRef.current,
-//   //         start: "top center",
-//   //         end: "bottom center",
-//   //         scrub: true,
-//   //         pin: true,
-//   //       },
-//   //     });
-//   //   });
-
-//   //   // TABLET + DESKTOP
-//   //   mm.add("(min-width: 641px)", () => {
-//   //     const tl = gsap.timeline({
-//   //       scrollTrigger: {
-//   //         trigger: hiddenTextRef.current,
-//   //         start: "top top",
-//   //         end: "bottom+=500 top+=40%",
-//   //         scrub: true,
-//   //         pin: true,
-//   //       },
-//   //     });
-
-//   //     tl.to(productRef.current, { y: 300, duration: 1, ease: "power1.out" })
-//   //       .to(productRef.current, { x: 280, y: -50, duration: 2, ease: "power1.in" });
-
-//   //     gsap.timeline()
-//   //       .to(text1Ref.current, { opacity: 1, delay: 0.5, ease: "power1.inOut" })
-//   //       .to(text1Ref.current, { y: 20, duration: 1.3, ease: "power1.inOut" });
-
-//   //     gsap.to(hiddenTextRef.current, {
-//   //       opacity: 1,
-//   //       scrollTrigger: {
-//   //         trigger: hiddenTextRef.current,
-//   //         start: "top center",
-//   //         end: "bottom center",
-//   //         scrub: true,
-//   //         pin: true,
-//   //       },
-//   //     });
-//   //   });
-
-//   //   // PIN OTHER SECTIONS
-//   //   sectionsRef.current.forEach((section) => {
-//   //     ScrollTrigger.create({
-//   //       trigger: section,
-//   //       start: "top top",
-//   //       end: "bottom top",
-//   //       pin: true,
-//   //       pinSpacing: true,
-//   //     });
-//   //   });
-
-//   //   return () => mm.revert();
-//   // }, []);
-// useEffect(() => {
-//   if (!productRef.current || !hiddenContent.current || !text1Ref.current) return;
-
-//   const mm = gsap.matchMedia();
-
-//   // ---------------- MOBILE ----------------
-//   mm.add("(max-width: 640px)", () => {
-//     const tl = gsap.timeline({
-//       scrollTrigger: {
-//         trigger: hiddenContent.current,
-//         start: "top top",
-//         end: "bottom+=500 top+=40%",
-//         scrub: true,
-//         pin: true,
-//       },
-//     });
-
-//     // Animate product
-//     tl.to(productRef.current, { y: 240, duration: 1, ease: "power1.out" })
-//       .to(productRef.current, { x: 0, y: 250, duration: 2, ease: "power1.in" });
-
-//     // Fade in hidden text as part of same timeline
-//     tl.to(hiddenContent.current, { opacity: 1, duration: 1 }, 0); // start immediately
-//     tl.to(hiddenContent.current, { opacity: 1, duration: 1 }, 0); // start immediately
-
-//     // Animate text1 separately but on scroll
-//     gsap.timeline()
-//       .to(text1Ref.current, { opacity: 1, delay: 0.5, ease: "power1.inOut" })
-//       .to(text1Ref.current, { y: 20, duration: 1.3, ease: "power1.inOut" });
-//   });
-
-//   // ---------------- TABLET + DESKTOP ----------------
-//   mm.add("(min-width: 641px)", () => {
-//     const tl = gsap.timeline({
-//       scrollTrigger: {
-//         trigger: hiddenContent.current,
-//         start: "top top",
-//         end: "bottom+=500 top+=40%",
-//         scrub: true,
-//         pin: true,
-//       },
-//     });
-
-//     // Animate product
-//     tl.to(productRef.current, { y: 300, duration: 1, ease: "power1.out" })
-//       .to(productRef.current, { x: 280, y: -50, duration: 2, ease: "power1.in" });
-
-//     // Fade in hidden text as part of same timeline
-//     tl.to(hiddenContent.current, { opacity: 1, duration: 1 }, 0);
-
-//     // Animate text1 separately but on scroll
-//     gsap.timeline()
-//       .to(text1Ref.current, { opacity: 1, delay: 0.5, ease: "power1.inOut" })
-//       .to(text1Ref.current, { y: 20, duration: 1.3, ease: "power1.inOut" });
-//   });
-
-//   // ---------------- PIN OTHER SECTIONS ----------------
-//   sectionsRef.current.forEach((section) => {
-//     ScrollTrigger.create({
-//       trigger: section,
-//       start: "top top",
-//       end: "bottom top",
-//       pin: true,
-//       pinSpacing: true,
-//     });
-//   });
-
-//   return () => mm.revert();
-// }, []);
-
-//   return (
-//     <section className="relative">
-//       {/* SECTION 1 */}
-//       <div className="relative h-[calc(100vh-64px)] w-full">
-//         <h1 ref={text1Ref} className="opacity-0 translate-y-[38vh]">
-//           Your healthiest <br /> skin revealed.
-//         </h1>
-//       </div>
-
-//       {/* SECTION 2 */}
-//       <div ref={hiddenContent} className="flex items-start justify-center h-[70vh] bg-red-300">
-//         <h1 className="opacity-0"></h1>
-//       </div>
-
-//       <div ref={hiddenText} className="flex items-start justify-center sm:h-[100vh] h-[70vh]">
-//         <h1 className="opacity-0">HiddenText</h1>
-//       </div>
-
-//       {/* PRODUCT IMAGE */}
-//       <div ref={productRef} className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-//         <Image src="/products/product2.avif" width={340} height={340} alt="Product" />
-//       </div>
-
-//       {/* SCROLL SECTIONS */}
-//       {scrollContent.map((item, i) => (
-//         <div key={i} className="h-screen flex sm:items-center" ref={addSectionRef}>
-//           <div className="sm:w-11/12 mx-auto">
-//             <div className="sm:w-5/12">
-//               <h4>{item.title}</h4>
-//               <p>{item.content}</p>
-//             </div>
-//           </div>
-//         </div>
-//       ))}
-//     </section>
-//   );
-// };
-
-// export default Hero;

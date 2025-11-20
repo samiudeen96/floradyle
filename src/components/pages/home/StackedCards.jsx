@@ -67,7 +67,7 @@ const StackedCards = () => {
   return (
     <div
       ref={containerRef}
-      className="container h-[calc(100vh-64px)] grid sm:grid-cols-2 items-center gap-10"
+      className="container h-[calc(100vh-64px)] grid grid-cols-2 items-center gap-10"
     >
       <h4 className="leading-[60px]">
         Your new skincare <br /> routine is beautifully <br /> simple.
@@ -88,24 +88,23 @@ const StackedCards = () => {
                 transform: `translateX(${offset}px) scale(${scale})`,
               }}
             >
-
-              <div className="relative w-full h-full"> 
+              <div className="relative w-full h-full">
                 <Image
-                className="object-cover"
-                src={item.img}
-                fill
-                alt={item.label}
-              />
+                  className="object-cover"
+                  src={item.img}
+                  fill
+                  alt={item.label}
+                />
                 <div className="absolute z-1w-full h-full flex items-end p-6 bg-black/15">
                   <div>
                     <div className="pill">Step 0{i + 1}</div>
-                    <h5 className="font-semibold semi-bold text-white mt-2">{item.label}</h5>
-                  <p className="text-white mt-3">{item.content}</p>
+                    <h5 className="font-semibold semi-bold text-white mt-2">
+                      {item.label}
+                    </h5>
+                    <p className="text-white mt-3">{item.content}</p>
                   </div>
                 </div>
               </div>
-              
-              
             </div>
           );
         })}
