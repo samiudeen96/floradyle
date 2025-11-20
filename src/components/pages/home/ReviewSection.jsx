@@ -82,8 +82,8 @@ const ReviewSection = () => {
       {/* FIRST SECTION (PINNED) */}
       <div className='h-[calc(100vh-64px)] flex items-center justify-center first-content relative'>
         <div className='text-center leading-none z-0 doorText absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full'>
-          <p className='text-[200px] font-semibold left-door'>What are</p>
-          <p className='text-[200px] font-semibold right-door'>they saying</p>
+          <p className='text-[200px] md:text-[140px] font-semibold left-door'>What are</p>
+          <p className='text-[200px] md:text-[140px] font-semibold right-door'>they saying</p>
         </div>
 
         <div className='hiddenContent text-center'>
@@ -102,7 +102,7 @@ const ReviewSection = () => {
           <h3 className='mt-4'>hidden content</h3>
           <div className='grid grid-cols-6 gap-2 mt-15'>
             {review.map((item, index) => (
-              <div key={index} className='relative w-[230px] h-[230px] rounded-lg overflow-hidden'>
+              <div key={index} className='relative md:w-[200px] md:h-[200px] w-[230px] h-[230px]  rounded-lg overflow-hidden'>
                 <Image className='object-cover' src={item.profileImg} fill alt={item.profileImg} />
               </div>
             ))}
