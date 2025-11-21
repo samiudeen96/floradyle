@@ -176,7 +176,7 @@ h6 {
     md:w-10/12          /* desktop */
     lg:w-10/12           /* large device */
     mx-auto 
-    bg-gray-200;
+    /* bg-gray-200; */
 }
 
 

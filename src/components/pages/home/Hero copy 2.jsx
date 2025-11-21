@@ -24,24 +24,8 @@ const Hero = () => {
     }
   };
 
-
   useGSAP(() => {
-  const ctx = gsap.context(() => {
-    // all GSAP code here
     const chars = blurTextRef.current.querySelectorAll(".char");
-
-          // ⭐ PRODUCT PIN (instead of CSS fixed)
-
-          if (scrollRefs.current.length < 5) return; // wait until refs exist
-      ScrollTrigger.create({
-        trigger: ".product-pin-section",
-        start: "top 64px",
-        endTrigger: ".heroSec4",
-        end: "bottom bottom",
-        pin: true,
-        pinSpacing: false,
-        markers: true
-      });
 
     gsap
       .timeline()
@@ -56,45 +40,29 @@ const Hero = () => {
         ease: "power1.inOut",
       });
 
-
     // Product initial scroll animation
     gsap.fromTo(
       productWrapperRef.current,
       {
-        yPercent: -28, 
-        xPercent: -50, 
-        top: "28%", 
-        left: "50%", 
-        position: "absolute", 
+        yPercent: -28, // initially move it up by 50% of its own height (center vertically)
+        xPercent: -50, // center horizontally
+        top: "28%", // ensure it starts at 50% of parent
+        left: "50%", // ensure it starts at 50% horizontally
+        position: "absolute", // needed for top/left positioning
       },
       {
-        yPercent: 41,
-        top: "41%",
+        yPercent: 58,
+        top: "58%",
         ease: "power1.inOut",
         scrollTrigger: {
           trigger: ".heroSec1",
-          start: "top top+=64px",
+          start: "top-=128px",
           end: "bottom center+=200px",
           scrub: true,
           // markers: true,
         },
-      },
+      }
     );
-
-
-    gsap.to(productWrapperRef.current, {
-      y: -330,
-      x: 330,
-      ease: "power1.inOut",
-      scrollTrigger: {
-        trigger: ".heroSec2",
-        start: "bottom center-=100",
-        end: "bottom top",
-        scrub: true,
-        // markers: true,
-      },
-    });
-
 
     gsap.fromTo(
       chars,
@@ -105,34 +73,51 @@ const Hero = () => {
         stagger: 0.04,
         ease: "power2.out",
         scrollTrigger: {
-          trigger: ".heroSec2",
-          start: "top-=200 top+=200",
+          trigger: ".productWrapperRef",
+          start: "bottom center+=220px",
           end: "bottom center",
           scrub: true,
           pin: true,
           // markers: true,
-          pinSpacing: true,
         },
       }
     );
 
 
-        // Pin scroll sections
-        scrollRefs.current.forEach((section) => {
-          ScrollTrigger.create({
-            trigger: section,
-            start: "top top+=64px",
-            end: "bottom top",
-            pin: true,
-            pinSpacing: true,
-            // markers: true
-          });
-        });
+        gsap.to(
+      ".productWrapperRef",
+      {
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".pinBlurTextRef",
+          start: "top+=64px",
+          end: "bottom center",
+          scrub: true,
+          pin: true,
+          // markers: true,
+        },
+      }
+    );
+
+
+    gsap.to(productWrapperRef.current, {
+      x: 250,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".section-scroll-trigger",
+        start: "bottom center",    
+        end: "top center", 
+        scrub: true,
+        pin: true,
+        markers: true,
+        pinSpacing: false
+        
+      },
+    });
+
+
 
   });
-
-  return () => ctx.revert();
-});
 
 
   // SINGLE sentence (for mobile)
@@ -145,52 +130,19 @@ const Hero = () => {
 
   return (
     <section className="relative">
-
-            {/* <div className="fixed top-0 left-0 z-0  h-[calc(100vh-64px)] w-full bg-red-100">
-      
-              <div
-                className="relative lg:w-[500px] lg:h-[500px] md:w-[250px] md:h-[280px] w-[280px] h-[250px] "
-                ref={productWrapperRef}
-              >
-                <Image
-                  className="object-contain"
-                  src="/bottle.png"
-                  fill
-                  alt="Product"
-                />
-              </div>
-            </div> */}
-
-            <div className="product-pin-section h-[calc(100vh-64px)] relative z-0">
+      {/* ---------------- SECTION 1 ---------------- */}
+      {/* <div className="hidden handRef"></div> */}
+      <div className=" z-0 relative heroSec1">
         <div
-          className="absolute top-0 left-0 w-full h-full flex items-center justify-center"
-        >
-          <div
-            className="relative lg:w-[500px] lg:h-[500px] md:w-[250px] md:h-[280px] w-[280px] h-[250px]"
-            ref={productWrapperRef}
-          >
-            <Image
-              className="object-contain"
-              src="/bottle.png"
-              fill
-              alt="Product"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div className="absolute top-0 left-0 h-full w-full">
-        <div
-          className=" section h-[calc(100vh-64px)] w-full flex items-center justify-between heroSec1"
+          className=" section h-[calc(100vh-64px)] w-full flex items-center justify-between"
           ref={handRef}
         >
           <h1 className="text1 opacity-0">
             Your healthiest <br /> skin revealed.
           </h1>
         </div>
-      {/* </div> */}
 
-      <div className="h-[calc(100vh-64px)] flex items-start justify-center w-full heroSec2 relative">
+      <div className="absolute top-0 h-[calc(100vh-64px)] flex items-center justify-center pinBlurTextRef w-full">
         <h3 ref={blurTextRef} className="leading-[75px] text-center">
           {/* DESKTOP (md and up): Two lines */}
           <span className="hidden md:inline-block">
@@ -232,14 +184,32 @@ const Hero = () => {
             ))}
           </span>
         </h3>
-      </div> 
+      </div>
+
+      </div>
+
+      {/* ---------------- PRODUCT IMAGE ---------------- */}
+      <div className="absolute top-0 left-0 z-0  h-[calc(100vh-64px)] w-full  productWrapperRef">
+
+        <div
+          className="relative lg:w-[500px] lg:h-[500px] md:w-[250px] md:h-[280px] w-[280px] h-[250px] "
+          ref={productWrapperRef}
+        >
+          <Image
+            className="object-contain"
+            src="/bottle.png"
+            fill
+            alt="Product"
+          />
+        </div>
+      </div>
 
       {/* ---------------- SCROLL SECTIONS ---------------- */}
-      <div className="heroSec3 section">
+      <div className="section-scroll-trigger bg-black/10">
               {scrollContent.map((item, index) => (
         <div
           key={index}
-          className="h-[calc(100vh-64px)] flex items-center"
+          className="h-screen flex items-center "
           ref={addToRefs}
         >
           <div className="container">
@@ -253,16 +223,9 @@ const Hero = () => {
       ))}
       </div>
 
-      <div className="heroSec4">ff</div>
-
 
 
       <div className="fixed bottom-10 right-10 text-red-800">{device}</div>
-      </div>
-
-
-
-
     </section>
   );
 };
