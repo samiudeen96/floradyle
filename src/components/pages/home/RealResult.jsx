@@ -232,12 +232,15 @@ import React, { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
+import { useMediaQuery } from "react-responsive";
+import { useDeviceType } from "@/hooks/useDeviceType";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const RealResult = () => {
   const image3Ref = useRef(null);
   const imageSecRef = useRef(null);
+    const device = useDeviceType();
 
 useGSAP(
   () => {
@@ -252,10 +255,10 @@ useGSAP(
         ease: "none",
         scrollTrigger: { 
           trigger: image3Ref.current,
-          start: "bottom-=100 center+=400",
-          end: "bottom+=300 center+=100",
+          start:  device === "mobile" ? "bottom-=800 center+=400" : "bottom-=100 center+=400",
+          end: "bottom-=700 center+=100",
           scrub: true,
-          // markers: true
+          markers: true
         },
       }
     );
