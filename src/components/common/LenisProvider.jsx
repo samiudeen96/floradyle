@@ -35,7 +35,7 @@ gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
 export default function SmoothScrollProvider({ children }) {
   useEffect(() => {
     const smoother = ScrollSmoother.create({
-      smooth: 1.2,        // like Lenis duration/smoothing
+      smooth: 5,        // like Lenis duration/smoothing
       effects: true,      // enables data-speed & data-lag
       normalizeScroll: true,
     });
