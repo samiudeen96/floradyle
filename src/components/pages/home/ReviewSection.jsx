@@ -38,7 +38,7 @@ const ReviewSection = () => {
           start: "top top+=90px",    // starts as second section enters
           end: "top top-=500px",
           scrub: 1,
-          markers: true
+          // markers: true
         }
       });
 
@@ -82,8 +82,8 @@ const ReviewSection = () => {
       {/* FIRST SECTION (PINNED) */}
       <div className='h-[calc(100vh-64px)] flex items-center justify-center first-content relative'>
         <div className='text-center leading-none z-0 doorText absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full'>
-          <p className='text-[200px] md:text-[140px] font-semibold left-door'>What are</p>
-          <p className='text-[200px] md:text-[140px] font-semibold right-door'>they saying</p>
+          <p className='md:text-[200px] text-[55px] font-semibold left-door'>What are</p>
+          <p className='md:text-[200px] text-[55px] font-semibold right-door'>they saying</p>
         </div>
 
         <div className='hiddenContent text-center'>
@@ -100,9 +100,9 @@ const ReviewSection = () => {
           </div>
           <p className='mt-2'>2500+ five-star reviews</p>
           <h3 className='mt-4'>hidden content</h3>
-          <div className='grid grid-cols-6 gap-2 mt-15'>
+          <div className='grid grid-cols-6 gap-2 md:mt-15 mt-10'>
             {review.map((item, index) => (
-              <div key={index} className='relative md:w-[200px] md:h-[200px] w-[230px] h-[230px]  rounded-lg overflow-hidden'>
+              <div key={index} className='relative md:w-[200px] md:h-[200px] w-[50px] h-[50px]  rounded-lg overflow-hidden'>
                 <Image className='object-cover' src={item.profileImg} fill alt={item.profileImg} />
               </div>
             ))}
@@ -112,12 +112,12 @@ const ReviewSection = () => {
 
       {/* REVIEWS GRID */}
       <div className='min-h-[calc(100vh-64px)] flex items-center justify-center second-content relative z-10'>
-        <div className="grid grid-cols-2 gap-20 justify-between">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 justify-between">
           {review.map((item, index) => (
             <div
               key={index}
               className={`p-5 w-96 min-h-96 flex flex-col justify-between bg-white rounded-lg ${
-                (index + 1) % 3 === 0 ? "col-span-2 mx-auto" : ""
+                (index + 1) % 3 === 0 ? "md:col-span-2 mx-auto" : ""
               }`}
             >
               <div>{item.content}</div>
@@ -137,11 +137,11 @@ const ReviewSection = () => {
       </div>
 
       {/* EMPTY THIRD SECTION TO RELEASE PIN */}
-      <div className='min-h-[calc(100vh-64px)] flex items-center justify-center third-content opacity-0'>
+      <div className='min-h-[calc(100dvh-64px)] flex items-center justify-center third-content opacity-0'>
         {/* This section triggers the animations */}
       </div>
       
-      <div className='min-h-[calc(100vh)] flex items-center justify-center forth-content opacity-0'>
+      <div className='min-h-[calc(100dvh-64px)] flex items-center justify-center forth-content opacity-0'>
         {/* This section ends the pinning */}
       </div>
     </div>

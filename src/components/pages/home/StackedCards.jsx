@@ -10,13 +10,15 @@ import { ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger);
 
 const StackedCards = () => {
-  const containerRef = useRef(null);
+  const stackedSectionRef = useRef(null);
   const cardsRef = useRef([]);
 
   useGSAP(() => {
+
+    const ctx = gsap.context(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: containerRef.current,
+        trigger: stackedSectionRef.current,
         start: "top 64px",
         end: `+=${slide.length * 500}`, // scroll distance per card
         scrub: true,
@@ -62,11 +64,14 @@ const StackedCards = () => {
         );
       });
     }
-  }, []);
+  });
+
+  return () => ctx.revert();
+});
 
   return (
     <div
-      ref={containerRef}
+      ref={stackedSectionRef}
       className="container h-[calc(100vh-64px)] grid grid-cols-2 items-center gap-10"
     >
       <h4 className="leading-[60px]">

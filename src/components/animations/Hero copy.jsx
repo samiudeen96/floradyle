@@ -1,6 +1,6 @@
 "use client";
 import Test from "@/components/animations/Test";
-import Logo from "@/components/Logo";
+import Logo from "@/components/common/Logo";
 import { useDeviceType } from "@/hooks/useDeviceType";
 import { useScreenSize } from "@/hooks/useScreenSize";
 import { scrollContent } from "@/utils/constant";

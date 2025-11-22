@@ -1,7 +1,7 @@
 import { menu } from "@/utils/constant";
 import Image from "next/image";
 import React from "react";
-import Cart from "../Cart";
+import Cart from "./Cart";
 import Link from "next/link";
 
 const Header = () => {

@@ -13,13 +13,25 @@
 // };
 
 
+// import { useScreenSize } from "./useScreenSize";
+
+// export const useDeviceType = () => {
+//   const { width } = useScreenSize();
+
+//   if (width < 768) return "mobile";          // mobile devices
+//   if (width >= 768 && width < 1024) return "tablet";  // tablets
+//   if (width >= 1024 && width < 1920) return "desktop"; // desktops
+//   if (width >= 1920) return "large-device";   // large monitors / 2K+
+// };
+
+
 import { useScreenSize } from "./useScreenSize";
 
 export const useDeviceType = () => {
   const { width } = useScreenSize();
 
-  if (width < 768) return "mobile";          // mobile devices
-  if (width >= 768 && width < 1024) return "tablet";  // tablets
+  if (width < 768) return "mobile";            // mobile devices
+  if (width >= 768 && width < 1024) return "tablet"; // tablets
   if (width >= 1024 && width < 1920) return "desktop"; // desktops
-  if (width >= 1920) return "large-device";   // large monitors / 2K+
+  return "large-device";                        // 1920+
 };

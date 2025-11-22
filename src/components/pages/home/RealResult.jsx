@@ -235,37 +235,38 @@ import { ScrollTrigger } from "gsap/all";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const TextImage = () => {
+const RealResult = () => {
   const image3Ref = useRef(null);
-  const containerRef = useRef(null);
+  const imageSecRef = useRef(null);
 
-  useGSAP(() => {
-    const ctx = gsap.context(() => {
-      // Image scroll animation
-      gsap.fromTo(
-        containerRef.current.querySelector(".image3"),
-        { y: -100 },
-        {
-          y: 50,
-          ease: "none",
-          scrollTrigger: {
-            trigger: image3Ref.current,
-            start: "top center+=300px",
-            end: "top top+=100px",
-            scrub: true,
-          },
-        }
-      );
-    }, containerRef);
+useGSAP(
+  () => {
+    const imageEl = imageSecRef.current?.querySelector(".image3");
+    if (!imageEl) return;
 
-    // Refresh ScrollTriggers to recalc page layout
-    ScrollTrigger.refresh();
+    gsap.fromTo(
+      imageEl,
+      { y: -100 },
+      {
+        y: 50,
+        ease: "none",
+        scrollTrigger: { 
+          trigger: image3Ref.current,
+          start: "top 70%",
+          end: "top 10%",
+          scrub: true,
+        },
+      }
+    );
 
-    return () => ctx.revert();
-  }, []);
+    requestAnimationFrame(() => ScrollTrigger.refresh());
+  },
+  { scope: imageSecRef }
+);
+
 
   return (
-    <div ref={containerRef} className="container mb-50">
+    <div ref={imageSecRef} className="container mb-50">
       {/* TOP SECTION */}
       <div className="pt-20">
         <h3>
@@ -379,7 +380,8 @@ const TextImage = () => {
             </div>
           </div>
 
-          <div className="col-span-2 h-full pt-10 px-10 rounded-lg bg-black/5 flex flex-col justify-between">
+          <div className=" backdrop-blur-2xl overflow-hidden rounded-lg col-span-2">
+            <div className=" h-full pt-10 bg-black/5 px-10   flex flex-col justify-between">
             <div>
               <h4>Science backed skincare.</h4>
               <p className="mt-4">
@@ -390,6 +392,7 @@ const TextImage = () => {
             <div className="w-full flex justify-center">
               <Image src="/dr.avif" width={230} height={500} alt="" />
             </div>
+          </div>
           </div>
 
           <div className="col-span-2 relative w-full h-[350px] rounded-2xl overflow-hidden">
@@ -412,5 +415,5 @@ const TextImage = () => {
   );
 };
 
-export default TextImage;
+export default RealResult;
 
