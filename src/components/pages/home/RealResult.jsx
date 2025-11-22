@@ -255,7 +255,7 @@ useGSAP(
           start: "bottom-=100 center+=400",
           end: "bottom+=300 center+=100",
           scrub: true,
-          markers: true
+          // markers: true
         },
       }
     );
