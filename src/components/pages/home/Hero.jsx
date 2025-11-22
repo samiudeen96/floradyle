@@ -103,15 +103,15 @@ const device = isMobile ? "mobile" : isTablet ? "tablet" : "desktop";
     gsap.fromTo(
       productWrapperRef.current,
       {
-        yPercent: device === "mobile" ? -65 : device === "tablet" ? -30 : -20,
+        yPercent: device === "mobile" ? -50 : device === "tablet" ? -30 : -20,
         xPercent: -50,
-        top: device === "mobile" ? "65%" : "20%",
+        top: device === "mobile" ? "50%" : "20%",
         left: "50%",
         position: "absolute",
       },
       {
-        yPercent: 41,
-        top: "41%",
+        yPercent: 56,
+        top: "56%",
         ease: "power1.inOut",
         scrollTrigger: {
           trigger: ".heroSec1",
@@ -124,7 +124,7 @@ const device = isMobile ? "mobile" : isTablet ? "tablet" : "desktop";
 
     // PRODUCT EXIT MOTION (same for all devices)
     gsap.to(productWrapperRef.current, {
-      y:  device == "mobile" ? "" : -330,
+      y:  device == "mobile" ? -90 : -330,
       x: device == "mobile" ? "" :  330,
       ease: "power1.inOut",
       scrollTrigger: {
