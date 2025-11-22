@@ -203,6 +203,13 @@ position: fixed;
     will-change: transform;
 }
 
+#smooth-wrapper {
+  overflow: hidden;
+}
+
+#smooth-content {
+  will-change: transform;
+}
 
 
 

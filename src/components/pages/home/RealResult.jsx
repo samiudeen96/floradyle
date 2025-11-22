@@ -367,7 +367,7 @@ useGSAP(
           alt=""
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 md:gap-4 w-full z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full z-10">
           <div className="flex flex-col gap-5">
             <div className="min-h-72 flex flex-col justify-between p-10 bg-white/25 rounded-lg">
               <h4>92.3%</h4>
@@ -385,7 +385,7 @@ useGSAP(
             </div>
           </div>
 
-          <div className=" backdrop-blur-2xl overflow-hidden rounded-lg col-span-2">
+          <div className=" backdrop-blur-2xl overflow-hidden rounded-lg md:col-span-2">
             <div className=" h-full pt-10 bg-black/5 px-10   flex flex-col justify-between">
             <div>
               <h4>Science backed skincare.</h4>
@@ -400,7 +400,7 @@ useGSAP(
           </div>
           </div>
 
-          <div className="col-span-2 relative w-full h-[350px] rounded-2xl overflow-hidden">
+          <div className="md:col-span-2 relative w-full h-[350px] rounded-2xl overflow-hidden">
             <Image className="object-cover" src="/eye.avif" fill alt="" />
             <div className="absolute p-10 w-full h-full bg-black/20">
               <h4 className="text-white">Your skin deserves better.</h4>
