@@ -268,7 +268,7 @@ useGSAP(
   return (
     <div ref={imageSecRef} className="container mb-50">
       {/* TOP SECTION */}
-      <div className="pt-20">
+      <div className=" section pt-5 md:pt-20">
         <h3>
           Simple ingredients, <strong>powerful results.</strong>
         </h3>
@@ -279,8 +279,9 @@ useGSAP(
           transform your skin.
         </p>
 
-        <div className="grid grid-cols-2 mt-20 gap-20">
-          <div className="relative w-full h-[800px] rounded-2xl overflow-hidden bg-red-200">
+        <div className="grid grid-cols-1 md:grid-cols-2 md:mt-20 mt-10 gap-10 md:gap-20">
+
+          <div className="relative w-full md:h-[800px] h-[400px] rounded-2xl overflow-hidden bg-red-200">
             <Image
               src="/image1.avif"
               alt=""
@@ -304,7 +305,7 @@ useGSAP(
 
         {/* BOTTOM GRID */}
         <div className="mt-20">
-          <div className="grid grid-cols-3 gap-25">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-25">
             {info.map((item, i) => (
               <div key={i}>
                 <Image src={item.icon} width={30} height={30} alt={item.title} />
@@ -320,7 +321,7 @@ useGSAP(
       </div>
 
       {/* MID SECTIONS */}
-      <div className="py-40 grid grid-cols-2 gap-20">
+      <div className="section py-40 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
         <div className="flex flex-col justify-center">
           <h3>Most skincare is doing too much.</h3>
           <p className="mt-8">
@@ -329,11 +330,11 @@ useGSAP(
             overwhelmed, irritated, and nowhere near its natural best.
           </p>
         </div>
-        <div className="relative w-full h-[800px] bg-red-200 rounded-2xl overflow-hidden">
+        <div className="relative w-full md:h-[800px] h-[400px] bg-red-200 rounded-2xl overflow-hidden">
           <Image className="object-cover" src="/imageText1.avif" fill alt="" />
         </div>
 
-        <div className="relative w-full h-[800px] bg-red-200 rounded-2xl overflow-hidden">
+        <div className="relative w-full md:h-[800px] h-[400px] bg-red-200 rounded-2xl overflow-hidden">
           <Image className="object-cover" src="/imageText2.avif" fill alt="" />
         </div>
         <div className="flex flex-col justify-center">
@@ -362,7 +363,7 @@ useGSAP(
           alt=""
         />
 
-        <div className="grid grid-cols-3 gap-4 w-full z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 md:gap-4 w-full z-10">
           <div className="flex flex-col gap-5">
             <div className="min-h-72 flex flex-col justify-between p-10 bg-white/25 rounded-lg">
               <h4>92.3%</h4>

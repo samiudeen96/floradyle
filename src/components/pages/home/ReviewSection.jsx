@@ -19,12 +19,13 @@ const ReviewSection = () => {
       --------------------------------------------- */
       ScrollTrigger.create({
         trigger: ".first-content",
-        start: "top 64px",
+        start: "top top+=64px",
         endTrigger: ".forth-content",
-        end: "top top",
+        // end: "bottom top",
         pin: true,
         pinSpacing: false,
         scrub: 0.5,
+        markers: true
       });
 
       /* ---------------------------------------------
@@ -111,12 +112,12 @@ const ReviewSection = () => {
       </div>
 
       {/* REVIEWS GRID */}
-      <div className='min-h-[calc(100vh-64px)] flex items-center justify-center second-content relative z-10'>
+      <div className='section min-h-[calc(100vh-64px)] flex items-center justify-center second-content relative z-10'>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 justify-between">
           {review.map((item, index) => (
             <div
               key={index}
-              className={`p-5 w-96 min-h-96 flex flex-col justify-between bg-white rounded-lg ${
+              className={`p-5 md:w-96 min-h-96 flex flex-col justify-between bg-white rounded-lg ${
                 (index + 1) % 3 === 0 ? "md:col-span-2 mx-auto" : ""
               }`}
             >
@@ -138,11 +139,10 @@ const ReviewSection = () => {
 
       {/* EMPTY THIRD SECTION TO RELEASE PIN */}
       <div className='min-h-[calc(100dvh-64px)] flex items-center justify-center third-content opacity-0'>
-        {/* This section triggers the animations */}
+        
       </div>
       
-      <div className='min-h-[calc(100dvh-64px)] flex items-center justify-center forth-content opacity-0'>
-        {/* This section ends the pinning */}
+      <div className=' flex items-center justify-center forth-content opacity-0'>
       </div>
     </div>
   );

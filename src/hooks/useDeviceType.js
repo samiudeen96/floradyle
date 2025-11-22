@@ -25,13 +25,34 @@
 // };
 
 
-import { useScreenSize } from "./useScreenSize";
+// import { useScreenSize } from "./useScreenSize";
+
+// export const useDeviceType = () => {
+//   const { width } = useScreenSize();
+
+//   if (width < 768) return "mobile";            // mobile devices
+//   if (width >= 768 && width < 1024) return "tablet"; // tablets
+//   if (width >= 1024 && width < 1920) return "desktop"; // desktops
+//   return "large-device";                        // 1920+
+// };
+
+
+import { useMediaQuery } from "react-responsive";
 
 export const useDeviceType = () => {
-  const { width } = useScreenSize();
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1023 });
+  const isDesktop = useMediaQuery({ minWidth: 1024, maxWidth: 1439 });
+  const isLargeDesktop = useMediaQuery({ minWidth: 1440 });
 
-  if (width < 768) return "mobile";            // mobile devices
-  if (width >= 768 && width < 1024) return "tablet"; // tablets
-  if (width >= 1024 && width < 1920) return "desktop"; // desktops
-  return "large-device";                        // 1920+
+  const device = isMobile
+    ? "mobile"
+    : isTablet
+    ? "tablet"
+    : isDesktop
+    ? "desktop"
+    : "large-desktop";
+
+  // return { isMobile, isTablet, isDesktop, isLargeDesktop, device };
+  return device;
 };

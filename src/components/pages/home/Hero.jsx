@@ -1,5 +1,5 @@
 "use client";
-import { useDeviceType } from "@/hooks/useDeviceType";
+// import { useDeviceType } from "@/hooks/useDeviceType";
 import { scrollContent } from "@/utils/constant";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -85,7 +85,7 @@ const device = isMobile ? "mobile" : isTablet ? "tablet" : "desktop";
         end: "bottom top",
         pin: true,
         pinSpacing: true,
-        markers: true
+        // markers: true
       });
     });
 
@@ -361,7 +361,7 @@ const device = isMobile ? "mobile" : isTablet ? "tablet" : "desktop";
 
 
 
-      <div className="fixed bottom-10 right-10 text-red-800">{device}</div>
+      {/* <div className="fixed bottom-10 right-10 text-red-800">{device}</div> */}
       </div>
 
 
