@@ -109,7 +109,7 @@ const Hero = () => {
           trigger: ".heroSec1",
           start: "top top+=64px",
           end: "bottom+=100 center+=100px",
-          scrub: 0.05,
+          scrub: true,
           markers: true
         },
       }
