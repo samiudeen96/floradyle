@@ -88,7 +88,7 @@ const Hero = () => {
       end: "bottom bottom",
       pin: true,
       pinSpacing: false,
-      markers: true
+      // markers: true
     });
 
     // PRODUCT INITIAL ANIMATION (Responsive start)
@@ -102,14 +102,15 @@ const Hero = () => {
         position: "absolute",
       },
       {
-        yPercent: 56,
-        top: "56%",
+        yPercent: 80,
+        top: "80%",
         ease: "power1.inOut",
         scrollTrigger: {
           trigger: ".heroSec1",
           start: "top top+=64px",
-          end: "bottom center+=200px",
+          end: "bottom+=100 center+=100px",
           scrub: true,
+          markers: true
         },
       }
     );
