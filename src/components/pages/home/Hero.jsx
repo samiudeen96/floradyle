@@ -121,7 +121,7 @@ const Hero = () => {
         },
         {
           // yPercent: device === "mobile" ? 170 : device === "tablet" ? 35 : 30, // final vertical offset
-          y: device === "mobile" ? "165%" : device === "tablet" ? "-20%" : "-30%",
+          y: device === "mobile" ? "130%" : device === "tablet" ? "-20%" : "-30%",
           ease: "power1.inOut",
           scrollTrigger: {
             trigger: ".heroSec1",

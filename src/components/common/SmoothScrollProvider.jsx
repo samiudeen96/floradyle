@@ -35,11 +35,20 @@ gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
 
 export default function SmoothScrollProvider({ children }) {
   useLayoutEffect(() => {
+    // const smoother = ScrollSmoother.create({
+    //   smooth: 1,
+    //   smoothTouch: 0.1,
+    //   effects: true,
+    // });
+
     const smoother = ScrollSmoother.create({
-      smooth: 1,
-      smoothTouch: 0.1,
-      effects: true,
-    });
+  smooth: 1.2,        // smooth scroll speed on desktop
+  smoothTouch: 0.12,  // small smoothing on mobile
+  effects: true,       // allow parallax / speed effects
+  normalizeScroll: true, // keeps pinned sections stable
+  ignoreMobileResize: true, // prevents jitter when resizing
+});
+
 
     return () => {
       smoother.kill();
