@@ -30,13 +30,15 @@ import { useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useDeviceType } from "@/hooks/useDeviceType";
 
 gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
 
 export default function SmoothScrollProvider({ children }) {
+  const device = useDeviceType();
   useLayoutEffect(() => {
     const smoother = ScrollSmoother.create({
-      smooth: 1.2,
+      smooth: device === "mobile" ? 8 : 3,
       smoothTouch: 0.1,
       effects: true,
     });
