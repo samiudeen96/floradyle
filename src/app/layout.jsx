@@ -25,9 +25,7 @@ export default function RootLayout({ children }) {
         <Header />
         <div id="smooth-wrapper">
           <div id="smooth-content">
-            <SmoothScrollProvider>
-              {children}
-            </SmoothScrollProvider>
+            <SmoothScrollProvider>{children}</SmoothScrollProvider>
           </div>
         </div>
       </body>

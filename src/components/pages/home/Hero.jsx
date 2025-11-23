@@ -38,12 +38,6 @@ const Hero = () => {
         )
         .to(".text1", {
           y: device === "mobile" ? "-32vh" : "-28vh",
-          // y:
-          //   device === "mobile"
-          //     ? "-15vh"
-          //     : device === "tablet"
-          //     ? "-25vh"
-          //     : "-35vh", // desktop
           duration: 1.4,
           ease: "power1.inOut",
         });
@@ -72,7 +66,7 @@ const Hero = () => {
 
       ScrollTrigger.create({
         trigger: ".product-pin-section",
-        start: device === "mobile" ? "top top+=80px" : "top top+=64px",
+        start: device === "mobile" ? "top top+=64px" : "top top+=64px",
         // endTrigger: ".sectionEnd", // dynamically detects the end
         // end: "top top",
         end: `+=${scrollContent.length * 2500}`,
@@ -116,40 +110,41 @@ const Hero = () => {
       //   }
       // );
 
-      // gsap.fromTo(
-      //   ".productWrapperRef",
-      //   {
-      //     yPercent: device === "mobile" ? 85 : device === "tablet" ? -30 : 28, // initial vertical offset
-      //     // y: "22vh",
-      //     xPercent: -50, // center horizontally
-      //     left: "50%",
-      //     position: "absolute",
-      //   },
-      //   {
-      //     // yPercent: device === "mobile" ? 170 : device === "tablet" ? 35 : 30, // final vertical offset
-      //     ease: "power1.inOut",
-      //     scrollTrigger: {
-      //       trigger: ".heroSec1",
-      //       start: "top-=64px top",
-      //       end: "bottom+=100 center",
-      //       scrub: true,
-      //       // markers: true, // enable for debugging
-      //     },
-      //   }
-      // );
+      gsap.fromTo(
+        ".productWrapperRef",
+        {
+          yPercent: device === "mobile" ? 85 : device === "tablet" ? -30 : 28, // initial vertical offset
+          // y: "22vh",
+          xPercent: -50, // center horizontally
+          left: "50%",
+          position: "absolute",
+        },
+        {
+          // yPercent: device === "mobile" ? 170 : device === "tablet" ? 35 : 30, // final vertical offset
+          y: device === "mobile" ? "165%" : device === "tablet" ? "-20%" : "-30%",
+          ease: "power1.inOut",
+          scrollTrigger: {
+            trigger: ".heroSec1",
+            start: "top-=64px top",
+            end: "bottom+=100 center",
+            scrub: true,
+            // markers: true, // enable for debugging
+          },
+        }
+      );
 
-      // gsap.to(productWrapperRef.current, {
-      //   y: device === "mobile" ? "-20%" : device === "tablet" ? "-20%" : "-30%",
-      //   x: device === "mobile" ? 0 : device === "tablet" ? 150 : 330,
-      //   ease: "power1.inOut",
-      //   scrollTrigger: {
-      //     trigger: ".heroSec2",
-      //     start: "center+=100 center+=100",
-      //     end: "center top+=200",
-      //     scrub: true,
-      //     markers: true,
-      //   },
-      // });
+      gsap.to(productWrapperRef.current, {
+        y: device === "mobile" ? "-20%" : device === "tablet" ? "-20%" : "-30%",
+        x: device === "mobile" ? 0 : device === "tablet" ? 150 : 330,
+        ease: "power1.inOut",
+        scrollTrigger: {
+          trigger: ".heroSec2",
+          start: "center+=100 center+=100",
+          end: "center top+=200",
+          scrub: true,
+          markers: true,
+        },
+      });
     });
 
     ScrollTrigger.refresh(); // IMPORTANT
@@ -255,7 +250,6 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* <div className="fixed bottom-10 right-10 text-red-800">{device}</div> */}
       </div>
     </section>
   );
