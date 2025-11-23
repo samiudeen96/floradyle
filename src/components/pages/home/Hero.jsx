@@ -107,7 +107,7 @@ const Hero = () => {
         ease: "power1.inOut",
         scrollTrigger: {
           trigger: ".heroSec1",
-          start: "top top+=64px",
+          start: "top-=64px top",
           end: "bottom+=100 center+=100px",
           scrub: true,
           markers: true
