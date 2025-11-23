@@ -69,9 +69,11 @@ const Hero = () => {
         start: device === "mobile" ? "top top+=64px" : "top top+=64px",
         // endTrigger: ".sectionEnd", // dynamically detects the end
         // end: "top top",
-        end: `+=${scrollContent.length * 2500}`,
+        end: "bottom+=10200 bottom-=160",
+        // end: `+=${scrollContent.length * 2200}`,
         pin: true,
         pinSpacing: false,
+        markers: true
       });
 
       // ✅ PIN EACH SCROLL SECTION AFTER product pin
@@ -113,7 +115,7 @@ const Hero = () => {
       gsap.fromTo(
         ".productWrapperRef",
         {
-          yPercent: device === "mobile" ? 85 : device === "tablet" ? -30 : 28, // initial vertical offset
+          yPercent: device === "mobile" ? 100 : device === "tablet" ? -30 : 28, // initial vertical offset
           // y: "22vh",
           xPercent: -50, // center horizontally
           left: "50%",
@@ -142,7 +144,7 @@ const Hero = () => {
           start: "center+=100 center+=100",
           end: "center top+=200",
           scrub: true,
-          markers: true,
+          // markers: true,
         },
       });
     });
@@ -237,6 +239,8 @@ const Hero = () => {
             </div>
           ))}
         </div>
+
+        <div className="secEnd"></div>
 
         <div className="absolute top-0 left-0 w-full h-[100vh] flex justify-center product-pin-section bg-black/10">
           <div className="relative lg:w-[500px] lg:h-[500px] md:w-[250px] md:h-[280px] w-[280px] h-[250px] productWrapperRef">

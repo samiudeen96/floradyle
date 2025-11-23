@@ -137,10 +137,21 @@ h1 {
   @apply -rotate-45 top-[39px] left-[8px];
 }
 
-h1 {
+/* h1 {
   @apply text-[38px] sm:text-[94px] leading-[48px] sm:leading-[110px];
   font-weight: 500;
+} */
+
+/*  */
+
+h1 {
+  font-weight: 500;
+  font-size: clamp(32px, 5vw, 94px);
+  line-height: clamp(40px, 6vw, 110px);
 }
+
+
+
 
 h2 {
   @apply text-[36px] sm:text-[80px] leading-[42px] sm:leading-[96px];
