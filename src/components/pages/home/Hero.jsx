@@ -108,7 +108,7 @@ const Hero = () => {
         scrollTrigger: {
           trigger: ".heroSec1",
           start: "top-=64px top",
-          end: "bottom+=100 center+=100px",
+          end: "bottom+=100 center",
           scrub: true,
           markers: true
         },
