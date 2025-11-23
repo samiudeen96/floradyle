@@ -269,7 +269,7 @@ const Hero = () => {
         </div>
       {/* </div> */}
 
-      <div className="h-[calc(100vh-64px)] flex items-start justify-center w-full heroSec2 relative">
+      <div className="section h-[calc(100vh-64px)] flex items-start justify-center w-full heroSec2 relative">
         <h3 ref={blurTextRef} className="leading-[75px] text-center">
           {/* DESKTOP (md and up): Two lines */}
           <span className="hidden md:inline-block">
