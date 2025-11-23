@@ -16,25 +16,13 @@ const Hero = () => {
   const scrollRefs = useRef([]);
   const handRef = useRef(null);
 
-     const device = useDeviceType();
-  
-
-  // const device = useDeviceType();
-  // "xs-mobile" / "mobile" / "tablet" / "laptop" / "desktop" / "large-desktop"
+  const device = useDeviceType();
 
   const addToRefs = (el) => {
     if (el && !scrollRefs.current.includes(el)) {
       scrollRefs.current.push(el);
     }
   };
-
-
-
-// const isMobile = useMediaQuery({ maxWidth: 767 });
-// const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1023 });
-// const isDesktop = useMediaQuery({ minWidth: 1024 });
-
-// const device = isMobile ? "mobile" : isTablet ? "tablet" : "desktop";
 
   useGSAP(() => {
   const ctx = gsap.context(() => {
@@ -100,6 +88,7 @@ const Hero = () => {
       end: "bottom bottom",
       pin: true,
       pinSpacing: false,
+      markers: true
     });
 
     // PRODUCT INITIAL ANIMATION (Responsive start)

@@ -22,26 +22,28 @@
 //   return <>{children}</>;
 // }
 
-
 "use client";
 
 import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useDeviceType } from "@/hooks/useDeviceType";
 
 gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
 
 export default function SmoothScrollProvider({ children }) {
+  const device = useDeviceType();
+
   useEffect(() => {
     const smoother = ScrollSmoother.create({
-      smooth: 4,        // like Lenis duration/smoothing
-      effects: true,      // enables data-speed & data-lag
+      smooth: device === "mobile" ? 4 : 3, // like Lenis duration/smoothing
+      effects: false, // enables data-speed & data-lag
       normalizeScroll: true,
     });
 
     return () => {
-      smoother.kill();    // cleanup on unmount
+      smoother.kill(); // cleanup on unmount
     };
   }, []);
 
