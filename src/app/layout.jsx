@@ -30,6 +30,7 @@ export default function RootLayout({ children }) {
           <div>{children}</div>
         </LenisProvider> */}
          <SmoothScrollProvider>
+          <Header />
           {children}
         </SmoothScrollProvider>
       </body>

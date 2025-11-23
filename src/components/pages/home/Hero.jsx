@@ -6,7 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import Image from "next/image";
 import React, { useRef } from "react";
-import { useMediaQuery } from "react-responsive";
+import { useDeviceType } from "@/hooks/useDeviceType";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,6 +15,9 @@ const Hero = () => {
   const productWrapperRef = useRef(null);
   const scrollRefs = useRef([]);
   const handRef = useRef(null);
+
+     const device = useDeviceType();
+  
 
   // const device = useDeviceType();
   // "xs-mobile" / "mobile" / "tablet" / "laptop" / "desktop" / "large-desktop"
@@ -27,11 +30,11 @@ const Hero = () => {
 
 
 
-const isMobile = useMediaQuery({ maxWidth: 767 });
-const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1023 });
-const isDesktop = useMediaQuery({ minWidth: 1024 });
+// const isMobile = useMediaQuery({ maxWidth: 767 });
+// const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1023 });
+// const isDesktop = useMediaQuery({ minWidth: 1024 });
 
-const device = isMobile ? "mobile" : isTablet ? "tablet" : "desktop";
+// const device = isMobile ? "mobile" : isTablet ? "tablet" : "desktop";
 
   useGSAP(() => {
   const ctx = gsap.context(() => {

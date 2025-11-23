@@ -232,7 +232,6 @@ import React, { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import { useMediaQuery } from "react-responsive";
 import { useDeviceType } from "@/hooks/useDeviceType";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -258,7 +257,7 @@ useGSAP(
           start:  device === "mobile" ? "bottom-=800 center+=400" : "bottom-=100 center+=400",
           end: "bottom-=700 center+=100",
           scrub: true,
-          markers: true
+          // markers: true
         },
       }
     );
