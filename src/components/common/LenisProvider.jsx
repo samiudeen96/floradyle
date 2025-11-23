@@ -37,7 +37,7 @@ export default function SmoothScrollProvider({ children }) {
 
   useEffect(() => {
     const smoother = ScrollSmoother.create({
-      smooth: device === "mobile" ? 5 : 3, // like Lenis duration/smoothing
+      smooth: device === "mobile" ? 8 : 3, // like Lenis duration/smoothing
       effects: false, // enables data-speed & data-lag
       normalizeScroll: true,
     });
