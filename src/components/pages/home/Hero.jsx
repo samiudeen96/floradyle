@@ -66,14 +66,14 @@ const Hero = () => {
 
       ScrollTrigger.create({
         trigger: ".product-pin-section",
-        start: device === "mobile" ? "top top+=64px" : "top top+=64px",
-        // endTrigger: ".sectionEnd", // dynamically detects the end
-        // end: "top top",
-        end: "bottom+=10200 bottom-=160",
-        // end: `+=${scrollContent.length * 2200}`,
+        start: "top top",
+        endTrigger: ".sectionEnd",
+        end: "top top", // 🔥 Ensures it unpins exactly at sectionEnd
         pin: true,
-        pinSpacing: false,
-        markers: true
+        pinSpacing: true,
+        pinType: "transform", // 🔥 REQUIRED for ScrollSmoother
+        anticipatePin: 1,
+        // markers: true,
       });
 
       // ✅ PIN EACH SCROLL SECTION AFTER product pin
@@ -89,28 +89,6 @@ const Hero = () => {
       });
 
       // PRODUCT INITIAL ANIMATION (Responsive start)
-      // gsap.fromTo(
-      //   productWrapperRef.current,
-      //   {
-      //     top: device === "mobile" ? "50%" : "20%",
-      //     yPercent: device === "mobile" ? -50 : device === "tablet" ? -30 : -20,
-      //     left: "50%",
-      //     xPercent: -50,
-      //     position: "absolute",
-      //   },
-      //   {
-      //     yPercent: device === "mobile" ? 46 : 35,
-      //     top: device === "mobile" ? "46%" : "35%",
-      //     ease: "power1.inOut",
-      //     scrollTrigger: {
-      //       trigger: ".heroSec1",
-      //       start: "top-=64px top",
-      //       end: "bottom+=100 center",
-      //       scrub: true,
-      //       // markers: true,
-      //     },
-      //   }
-      // );
 
       gsap.fromTo(
         ".productWrapperRef",
@@ -123,7 +101,12 @@ const Hero = () => {
         },
         {
           // yPercent: device === "mobile" ? 170 : device === "tablet" ? 35 : 30, // final vertical offset
-          y: device === "mobile" ? "130%" : device === "tablet" ? "-20%" : "-30%",
+          y:
+            device === "mobile"
+              ? "130%"
+              : device === "tablet"
+              ? "-20%"
+              : "-30%",
           ease: "power1.inOut",
           scrollTrigger: {
             trigger: ".heroSec1",
@@ -240,7 +223,7 @@ const Hero = () => {
           ))}
         </div>
 
-        <div className="secEnd"></div>
+        <div className="sectionEnd"></div>
 
         <div className="absolute top-0 left-0 w-full h-[100vh] flex justify-center product-pin-section bg-black/10">
           <div className="relative lg:w-[500px] lg:h-[500px] md:w-[250px] md:h-[280px] w-[280px] h-[250px] productWrapperRef">
@@ -253,7 +236,6 @@ const Hero = () => {
             />
           </div>
         </div>
-
       </div>
     </section>
   );

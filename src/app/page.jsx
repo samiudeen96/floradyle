@@ -8,8 +8,8 @@ export default function Home() {
     <div className="">
       <Hero />
       <StackedCards />
-      {/* <RealResult /> */}
-      {/* <ReviewSection  /> */}
+      <RealResult />
+      <ReviewSection  />
     </div>
   );
 }
