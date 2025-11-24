@@ -88,7 +88,7 @@ ScrollTrigger.create({
   pin: true,
   pinSpacing: true,
   pinType: "transform", // required if using ScrollSmoother
-  markers: true,
+  // markers: true,
 });
 
 
@@ -241,7 +241,7 @@ ScrollTrigger.create({
 
         <div className="sectionEnd"></div>
 
-        <div className="absolute top-0 left-0 w-full h-[100vh] flex justify-center product-pin-section bg-black/10">
+        <div className="absolute top-0 left-0 w-full h-[100vh] flex justify-center product-pin-section ">
           <div className="relative lg:w-[500px] lg:h-[500px] md:w-[250px] md:h-[280px] w-[280px] h-[250px] productWrapperRef">
             <Image
               ref={productWrapperRef}
