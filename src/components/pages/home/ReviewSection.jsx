@@ -19,7 +19,7 @@ const ReviewSection = () => {
       --------------------------------------------- */
       ScrollTrigger.create({
         trigger: ".first-content",
-        start: "top top+=64px",
+        start: "top-=68 top+=68px",
         endTrigger: ".forth-content",
         end: "bottom bottom",
         pin: true,
