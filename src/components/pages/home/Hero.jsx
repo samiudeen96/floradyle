@@ -163,7 +163,7 @@ ScrollTrigger.create({
 
   return (
     <section className="relative">
-      <div className=" top-0 left-0 h-full w-full">
+      <div className="h-full w-full">
         <div
           className=" section h-[100vh] w-full flex items-center justify-between heroSec1"
           ref={handRef}
@@ -239,9 +239,13 @@ ScrollTrigger.create({
           ))}
         </div>
 
-        <div className="sectionEnd"></div>
+        <div>
 
-        <div className="absolute top-0 left-0 w-full h-[100vh] flex justify-center product-pin-section ">
+        </div>
+
+
+      </div>
+          {/* <div className="absolute top-0 left-0 w-full h-[100vh] flex justify-center product-pin-section ">
           <div className="relative lg:w-[500px] lg:h-[500px] md:w-[250px] md:h-[280px] w-[280px] h-[250px] productWrapperRef">
             <Image
               ref={productWrapperRef}
@@ -251,8 +255,7 @@ ScrollTrigger.create({
               alt="Product"
             />
           </div>
-        </div>
-      </div>
+        </div> */}
     </section>
   );
 };
