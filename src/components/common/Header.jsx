@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <header className="sticky top-0 left-0 w-full z-50">
       <section
-        className="h-16 lg:px-12 sm:px-6 px-4 grid grid-cols-3 
+        className="h-16 lg:px-12 sm:px-6 px-4 flex 
         items-center justify-between
         bg-white/60 backdrop-blur-md border-b border-white/20"
       >
@@ -25,7 +25,8 @@ const Header = () => {
         </div>
 
         {/* Logo */}
-        <Link href={"/"}>
+        <div className="relative">
+                  <Link href={"/"}>
           <Image
           className="cursor-pointer"
             src="/logo.webp"
@@ -35,6 +36,7 @@ const Header = () => {
             priority
           />
         </Link>
+        </div>
 
         {/* Menu */}
         <ul className="sm:flex gap-10 items-center justify-center hidden">

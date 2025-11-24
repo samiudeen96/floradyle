@@ -64,32 +64,32 @@ const Hero = () => {
         }
       );
 
-      ScrollTrigger.create({
-        trigger: ".product-pin-section",
-        start: "top top",
-        endTrigger: ".sectionEnd",
-        end: "top top", // 🔥 Ensures it unpins exactly at sectionEnd
-        pin: true,
-        pinSpacing: true,
-        pinType: "transform", // 🔥 REQUIRED for ScrollSmoother
-        anticipatePin: 1,
-        markers: true,
-      });
+      // ScrollTrigger.create({
+      //   trigger: ".product-pin-section",
+      //   start: "top top",
+      //   endTrigger: ".sectionEnd",
+      //   end: "top top", // 🔥 Ensures it unpins exactly at sectionEnd
+      //   pin: true,
+      //   pinSpacing: true,
+      //   pinType: "transform", // 🔥 REQUIRED for ScrollSmoother
+      //   anticipatePin: 1,
+      //   markers: true,
+      // });
 
       // TOTAL height of all sections + first section
-// const sectionHeight = window.innerHeight + 48; // adjust if header exists
-// const totalHeight = (scrollRefs.current.length + 6) * sectionHeight;
+const sectionHeight = window.innerHeight + 48; // adjust if header exists
+const totalHeight = (scrollRefs.current.length + 6) * sectionHeight;
 
-// ScrollTrigger.create({
-//   trigger: ".product-pin-section",
-//   start: "top top",
-//   // endTrigger: ".sectionEnd",
-//   end: "+=" + totalHeight, // pin until all sections scroll past
-//   pin: true,
-//   pinSpacing: true,
-//   pinType: "transform", // required if using ScrollSmoother
-//   // markers: true,
-// });
+ScrollTrigger.create({
+  trigger: ".product-pin-section",
+  start: "top top",
+  // endTrigger: ".sectionEnd",
+  end: "+=" + totalHeight, // pin until all sections scroll past
+  pin: true,
+  pinSpacing: true,
+  pinType: "transform", // required if using ScrollSmoother
+  // markers: true,
+});
 
 
       // ✅ PIN EACH SCROLL SECTION AFTER product pin
