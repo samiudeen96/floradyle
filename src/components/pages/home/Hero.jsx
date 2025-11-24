@@ -24,7 +24,7 @@ const Hero = () => {
     }
   };
 
-  useGSAP(() => {
+  useGSAP(() => { 
     const ctx = gsap.context(() => {
       const chars = blurTextRef.current.querySelectorAll(".char");
 
@@ -64,17 +64,33 @@ const Hero = () => {
         }
       );
 
-      ScrollTrigger.create({
-        trigger: ".product-pin-section",
-        start: "top top",
-        endTrigger: ".sectionEnd",
-        end: "top top", // 🔥 Ensures it unpins exactly at sectionEnd
-        pin: true,
-        pinSpacing: true,
-        pinType: "transform", // 🔥 REQUIRED for ScrollSmoother
-        anticipatePin: 1,
-        // markers: true,
-      });
+      // ScrollTrigger.create({
+      //   trigger: ".product-pin-section",
+      //   start: "top top",
+      //   endTrigger: ".sectionEnd",
+      //   end: "top top", // 🔥 Ensures it unpins exactly at sectionEnd
+      //   pin: true,
+      //   pinSpacing: true,
+      //   pinType: "transform", // 🔥 REQUIRED for ScrollSmoother
+      //   anticipatePin: 1,
+      //   markers: true,
+      // });
+
+      // TOTAL height of all sections + first section
+const sectionHeight = window.innerHeight + 48; // adjust if header exists
+const totalHeight = (scrollRefs.current.length + 6) * sectionHeight;
+
+ScrollTrigger.create({
+  trigger: ".product-pin-section",
+  start: "top top",
+  // endTrigger: ".sectionEnd",
+  end: "+=" + totalHeight, // pin until all sections scroll past
+  pin: true,
+  pinSpacing: true,
+  pinType: "transform", // required if using ScrollSmoother
+  markers: true,
+});
+
 
       // ✅ PIN EACH SCROLL SECTION AFTER product pin
       scrollRefs.current.forEach((section) => {
@@ -83,8 +99,8 @@ const Hero = () => {
           start: device === "mobile" ? "top top+=80px" : "top top+=64px",
           end: "bottom top",
           pin: true,
-          pinSpacing: true,
-          // markers: true
+          snap: 1,
+          pinSpacing: true
         });
       });
 
@@ -106,7 +122,7 @@ const Hero = () => {
               ? "130%"
               : device === "tablet"
               ? "-20%"
-              : "-30%",
+              : "100%",
           ease: "power1.inOut",
           scrollTrigger: {
             trigger: ".heroSec1",
@@ -119,7 +135,7 @@ const Hero = () => {
       );
 
       gsap.to(productWrapperRef.current, {
-        y: device === "mobile" ? "-20%" : device === "tablet" ? "-20%" : "-30%",
+        y: device === "mobile" ? "-20%" : device === "tablet" ? "-20%" : "-60%",
         x: device === "mobile" ? 0 : device === "tablet" ? 150 : 330,
         ease: "power1.inOut",
         scrollTrigger: {
