@@ -19,9 +19,9 @@ const ReviewSection = () => {
       --------------------------------------------- */
       ScrollTrigger.create({
         trigger: ".first-content",
-        start: "top top+=64px",
+        start: "top top",
         endTrigger: ".forth-content",
-        end: "bottom bottom",
+        // end: "bottom top",
         pin: true,
         pinSpacing: false,
         scrub: 0.5,
@@ -138,12 +138,12 @@ const ReviewSection = () => {
       </div>
 
       {/* EMPTY THIRD SECTION TO RELEASE PIN */}
-      <div className='min-h-[calc(100dvh-64px)] flex items-center justify-center third-content opacity-0'>
+      {/* <div className='min-h-[calc(100vh-64px)] flex items-center justify-center third-content opacity-0'>
         
-      </div>
+      </div> */}
       
-      <div className='min-h-[calc(100dvh-64px)] flex items-center justify-center forth-content opacity-0'>
-      </div>
+      {/* <div className=' flex items-center justify-center forth-content opacity-0'>
+      </div> */}
     </div>
   );
 }

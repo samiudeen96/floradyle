@@ -6,11 +6,10 @@ import RealResult from "@/components/pages/home/RealResult";
 export default function Home() {
   return (
     <div className="">
-      {/* <Hero /> */}
-      {/* <StackedCards /> */}
-      {/* <RealResult /> */}
-      <ReviewSection  />
+      <Hero />
+      <StackedCards />
       <RealResult />
+      <ReviewSection  />
     </div>
   );
 }
