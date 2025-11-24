@@ -47,7 +47,7 @@ const Cart = () => {
         className="flex items-center gap-1 cursor-pointer"
         onClick={() => setIsOpen(true)}
       >
-        <h6>Bag</h6>
+        <p>Bag</p>
         <div className="min-w-5 h-5 bg-[#3a3d38] rounded-sm flex items-center justify-center text-xs font-semibold text-white">
           1
         </div>

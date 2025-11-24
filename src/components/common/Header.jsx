@@ -37,10 +37,17 @@ const Header = () => {
         </Link>
 
         {/* Menu */}
-        <ul className="sm:flex gap-4 items-center justify-center hidden">
+        <ul className="sm:flex gap-10 items-center justify-center hidden">
           {menu.map((item, index) => (
             <li key={index}>
-              <Link href={item.path}>{item.label}</Link>
+              
+              <Link className="animated-button" href={item.path}>
+              <div className="button-inner">
+                <p className="button-text">{item.label}</p>
+                <p className="button-text-hover">{item.label}</p>
+                </div>
+              </Link>
+
             </li>
           ))}
         </ul>

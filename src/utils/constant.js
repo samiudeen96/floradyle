@@ -1,17 +1,37 @@
+
+export const currency = "AED"
+
 export const menu = [
-  {
-    label: "About",
+    {
+    label: "Home",
+    path: "/"
+  },
+    {
+    label: "Shop",
+    path: "/shop"
+  },
+      {
+    label: "Events",
+    path: "/event"
+  },
+      {
+    label: "News",
+    path: "/shop"
+  },
+      {
+    label: "Ingredients",
+    path: "/about"
+  },
+    {
+    label: "About Us",
     path: "/about"
   },
   {
-    label: "Journal",
-    path: "/journal"
-  },
-  {
-    label: "Support",
-    path: "/support"
+    label: "Contact Us",
+    path: "/contact"
   },
 ];
+
 
 export const scrollContent = [
   {
@@ -43,6 +63,8 @@ export const scrollContent = [
   
 ];
 
+
+
 export const slide = [
   {
     label: "Apply",
@@ -61,6 +83,8 @@ export const slide = [
   },
   
 ];
+
+
 
 export const activeIngredients = [
   {
@@ -86,6 +110,7 @@ export const activeIngredients = [
 ]
 
 
+
 export const info = [
   {
     icon: "/lab.svg",
@@ -103,6 +128,7 @@ export const info = [
     subtext:"Lorem Ipsum is simply dummy text of the printing and typesetting industry."
   }
 ]
+
 
 
 export const review = [
