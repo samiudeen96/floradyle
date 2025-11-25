@@ -76,7 +76,7 @@ const Hero = () => {
         pin: true,
         pinSpacing: false,
         // pinType: "transform", // required if using ScrollSmoother
-        // markers: true,
+        markers: true,
       });
 
       // ✅ PIN EACH SCROLL SECTION AFTER product pin
