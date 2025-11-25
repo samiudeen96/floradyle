@@ -64,18 +64,6 @@ const Hero = () => {
         }
       );
 
-      // ScrollTrigger.create({
-      //   trigger: ".product-pin-section",
-      //   start: "top top",
-      //   endTrigger: ".sectionEnd",
-      //   end: "top top", // 🔥 Ensures it unpins exactly at sectionEnd
-      //   pin: true,
-      //   pinSpacing: true,
-      //   pinType: "transform", // 🔥 REQUIRED for ScrollSmoother
-      //   anticipatePin: 1,
-      //   markers: true,
-      // });
-
       // TOTAL height of all sections + first section
       const sectionHeight = window.innerHeight + 48; // adjust if header exists
       const totalHeight = (scrollRefs.current.length + 6) * sectionHeight;
@@ -105,18 +93,12 @@ const Hero = () => {
 
       // PRODUCT INITIAL ANIMATION (Responsive start)
 
-      gsap.to(
-        ".productWrapperRef",
-        // {
-        //   // yPercent: device === "tablet" ? -30 : "", // initial vertical offset
-        //   // y: "22vh",
-        //   // xPercent: -50, // center horizontally
-        //   // left: "50%",
-        //   // position: "absolute",
-        // },
-        {
-          // yPercent: device === "mobile" ? 170 : device === "tablet" ? 35 : 30, // final vertical offset
-          y:
+            gsap
+        .timeline()
+        .to(
+          ".productWrapperRef",
+          {
+                y:
             device === "mobile"
               ? "90%"
               : device === "tablet"
@@ -131,10 +113,9 @@ const Hero = () => {
             scrub: true,
             // markers: true, // enable for debugging
           },
-        }
-      );
+          })
 
-      gsap.to(productWrapperRef.current, {
+          .to(productWrapperRef.current, {
         y: device === "mobile" ? "-20%" : device === "tablet" ? "-20%" : "-100%",
         x: device === "mobile" ? 0 : device === "tablet" ? 150 : 330,
         ease: "power1.inOut",
@@ -143,7 +124,7 @@ const Hero = () => {
           start: "center+=100 center+=100",
           end: "center top",
           scrub: true,
-          markers: true,
+          // markers: true,
         },
       });
     });
