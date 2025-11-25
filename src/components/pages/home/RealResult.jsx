@@ -409,7 +409,7 @@ useGSAP(
           </div>
           </div>
 
-          <div className="md:col-span-2 relative w-full h-[350px] rounded-2xl overflow-hidden">
+          <div className="md:col-span-2 relative w-full h-[350px] rounded-lg overflow-hidden">
             <Image className="object-cover" src="/eye.avif" fill alt="" />
             <div className="absolute p-10 w-full h-full bg-black/20">
               <h4 className="text-white">Your skin deserves better.</h4>
