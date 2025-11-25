@@ -75,8 +75,8 @@ const Hero = () => {
         endTrigger: ".sectionEnd",
         end: "bottom-=170 top", // pin until all sections scroll past
         pin: true,
+        pinType: "transform", // required if using ScrollSmoother
         pinSpacing: false,
-        // pinType: "transform", // required if using ScrollSmoother
         // markers: true,
       });
 
@@ -87,6 +87,7 @@ const Hero = () => {
           start: "top top+=64px",
           end: "bottom top",
           pin: true,
+          pinType: "transform", // required if using ScrollSmoother
           // snap: 1,
           pinSpacing: false,
           // markers: true,

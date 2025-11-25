@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/common/Header";
 import { QueryProvider } from "@/components/common/QueryProvider";
+import SmoothScrollProvider from "@/components/common/SmoothScrollProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,14 +25,13 @@ export default function RootLayout({ children }) {
       <body className={`${geistSans.variable} ${geistMono.variable} relative`}>
         <Header />
 
-        <div id="smooth-wrapper" >
+        <div id="smooth-wrapper" className="pt-[64px]">
           <div id="smooth-content">
-            <QueryProvider>
-              <div className="mt-[64px]">
-{children}
-              </div>
-              
-            </QueryProvider>
+            <SmoothScrollProvider>
+              <QueryProvider>
+                {children}
+              </QueryProvider>
+            </SmoothScrollProvider>
           </div>
         </div>
       </body>

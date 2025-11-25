@@ -44,7 +44,7 @@ export default function ScrollSection() {
             pin: isDesktop,
             pinSpacing: false,
             invalidateOnRefresh: true,
-            markers: false,
+            markers: true,
           });
         });
 

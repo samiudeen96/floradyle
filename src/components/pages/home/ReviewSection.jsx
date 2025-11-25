@@ -9,7 +9,8 @@ import Image from 'next/image';
 gsap.registerPlugin(ScrollTrigger);
 
 const ReviewSection = () => {
-  const containerRef = useRef(null);
+
+  const reviewRef = useRef();
 
   useGSAP(() => {
     const ctx = gsap.context(() => {
@@ -18,10 +19,10 @@ const ReviewSection = () => {
        1️⃣ Pin the first-content smoothly
       --------------------------------------------- */
       ScrollTrigger.create({
-        trigger: containerRef.current,
-        start: "top-=68px top+=64px",
+        trigger: reviewRef.current,
+        start: "top top+=64px", // Account for header height
         endTrigger: ".forth-content",
-        end: "bottom bottom",
+        end: "bottom top+=64px", // End when forth-content reaches top
         pin: true,
         pinSpacing: false,
         scrub: 0.5,
@@ -72,7 +73,7 @@ const ReviewSection = () => {
         }
       );
 
-    }, containerRef);
+    });
 
     return () => ctx.revert();
   }, []); // Added empty dependency array
@@ -81,7 +82,7 @@ const ReviewSection = () => {
     <div  className='container'>
 
       {/* FIRST SECTION (PINNED) */}
-      <div className='h-[calc(100vh-64px)] flex items-center justify-center first-content relative bg-amber-200' ref={containerRef}>
+      <div className='h-[calc(100vh-64px)] flex items-center justify-center first-content relative' ref={reviewRef}>
         <div className='text-center leading-none z-0 doorText absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full'>
           <p className='md:text-[200px] text-[55px] font-semibold left-door'>What are</p>
           <p className='md:text-[200px] text-[55px] font-semibold right-door'>they saying</p>
