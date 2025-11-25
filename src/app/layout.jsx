@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
       <body className={`${geistSans.variable} ${geistMono.variable} relative`}>
         <Header />
 
-        <div id="smooth-wrapper">
+        <div id="smooth-wrapper" className="mt-[64px]">
           <div id="smooth-content">
             <QueryProvider>
               {children}
