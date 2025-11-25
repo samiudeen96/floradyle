@@ -73,7 +73,7 @@ const ReviewSection = () => {
         }
       );
 
-    });
+    }, reviewRef);
 
     return () => ctx.revert();
   }, []); // Added empty dependency array
