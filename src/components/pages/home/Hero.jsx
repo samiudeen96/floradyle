@@ -70,7 +70,7 @@ const Hero = () => {
 
       ScrollTrigger.create({
         trigger: ".product-pin-section",
-        start: "center-=32px center", 
+        start: "center-=42px center", 
         endTrigger: ".sectionEnd",
         end: "top bottom", // pin until all sections scroll past
         pin: true,
