@@ -89,7 +89,7 @@ const Hero = () => {
           pin: true,
           // snap: 1,
           pinSpacing: false,
-          markers: true,
+          // markers: true,
         });
       });
 
@@ -229,7 +229,7 @@ const Hero = () => {
           {scrollContent.map((item, index) => (
             <div
               key={index}
-              className="h-[calc(100vh-64px)] flex items-start md:items-center bg-white section z-0"
+              className="h-[calc(100vh-64px)] flex items-start md:items-center bg-background section z-0"
               ref={addToRefs}
             >
               <div className="container">

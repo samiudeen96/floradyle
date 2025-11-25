@@ -227,7 +227,7 @@ position: fixed;
 
 #smooth-wrapper {
   overflow: hidden;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 #smooth-content {

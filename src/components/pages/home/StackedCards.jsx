@@ -29,10 +29,11 @@ const StackedCards = () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: stackedSectionRef.current,
-          start: "top 64px",
+          start: "top top+=64px",
           end: `+=${slide.length * 500}`,
           scrub: true,
           pin: true,
+          // markers: true,
         },
       });
 
@@ -79,12 +80,12 @@ const StackedCards = () => {
   }, [mounted, device]);
 
   return (
-    <div className="container">
+    <div className="container mt-20" >
       <div
         ref={stackedSectionRef}
-        className="section h-[calc(100vh-64px)] grid grid-cols-1 md:grid-cols-2 md:items-center gap-5 md:gap-10"
+        className="section h-[calc(100vh-64px)] grid grid-cols-1 md:grid-cols-2 md:items-center gap-5 md:gap-10 "
       >
-        <h4 className="leading-[60px]">
+        <h4 className="">
           Your new skincare <br /> routine is beautifully <br /> simple.
         </h4>
 

@@ -269,7 +269,7 @@ useGSAP(
 
 
   return (
-    <div ref={imageSecRef} className="container mb-50">
+    <div ref={imageSecRef} className="container">
       {/* TOP SECTION */}
       <div className=" section pt-5 md:pt-20">
         <h3>
@@ -324,7 +324,7 @@ useGSAP(
       </div>
 
       {/* MID SECTIONS */}
-      <div className="section py-40 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
+      <div className="section grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 my-56">
         <div className="flex flex-col justify-center">
           <h3>Most skincare is doing too much.</h3>
           <p className="mt-8">
@@ -352,7 +352,7 @@ useGSAP(
       {/* SCROLL ANIMATED SECTION */}
       <div
         ref={image3Ref}
-        className="relative bg-[#D4DCCF] min-h-[170vh] rounded-2xl flex flex-col justify-between items-center p-5"
+        className="relative bg-[#D4DCCF] min-h-[170vh] rounded-2xl flex flex-col justify-between items-center p-5 mb-56"
       >
         <h3 className="pt-30">
           <strong>Real result</strong> you <br /> can see and feel.
