@@ -259,7 +259,7 @@ useGSAP(
           end: "top center-=200",
           // end: "bottom-=700 center-=150",
           scrub: true,
-          markers: true
+          // markers: true
         },
       }
     );
@@ -371,20 +371,27 @@ useGSAP(
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full z-10">
           <div className="flex flex-col gap-4">
-            <div className="min-h-72 flex flex-col justify-between p-10 bg-white/25 rounded-lg">
+
+            <div className="backdrop-blur-2xl overflow-hidden">
+              <div className="min-h-72 flex flex-col justify-between p-10 bg-white/25 rounded-lg">
               <h4>92.3%</h4>
               <div>
                 We stripped away everything unnecessary and focused on five
                 ingredients
               </div>
             </div>
-            <div className="min-h-72 flex flex-col justify-between p-10 bg-white/25 rounded-lg">
+            </div>
+
+            <div className="backdrop-blur-2xl overflow-hidden">
+              <div className="min-h-72 flex flex-col justify-between p-10 bg-white/25 rounded-lg">
               <h4>28 Days</h4>
               <div>
                 We stripped away everything unnecessary and focused on five
                 ingredients
               </div>
             </div>
+            </div>
+            
           </div>
 
           <div className=" backdrop-blur-2xl overflow-hidden rounded-lg md:col-span-2">
