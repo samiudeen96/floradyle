@@ -7,6 +7,7 @@ import { ScrollTrigger } from "gsap/all";
 import Image from "next/image";
 import React, { useRef } from "react";
 import { useDeviceType } from "@/hooks/useDeviceType";
+import ScrollSection from "@/components/animations/ScrollSection";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -72,22 +73,23 @@ const Hero = () => {
         trigger: ".product-pin-section",
         start: "center-=52px center", 
         endTrigger: ".sectionEnd",
-        end: "top bottom", // pin until all sections scroll past
+        end: "bottom-=170 top", // pin until all sections scroll past
         pin: true,
         pinSpacing: false,
         // pinType: "transform", // required if using ScrollSmoother
-        markers: true,
+        // markers: true,
       });
 
       // ✅ PIN EACH SCROLL SECTION AFTER product pin
       scrollRefs.current.forEach((section) => {
         ScrollTrigger.create({
           trigger: section,
-          start: device === "mobile" ? "top top+=80px" : "top top+=64px",
+          start: "top top+=64px",
           end: "bottom top",
           pin: true,
-          snap: 1,
-          pinSpacing: true,
+          // snap: 1,
+          pinSpacing: false,
+          markers: true,
         });
       });
 
@@ -115,7 +117,7 @@ const Hero = () => {
           },
           })
 
-          .to(productWrapperRef.current, {
+        .to(productWrapperRef.current, {
         y: device === "mobile" ? "-20%" : device === "tablet" ? "-20%" : "-100%",
         x: device === "mobile" ? 0 : device === "tablet" ? 150 : 330,
         ease: "power1.inOut",
@@ -156,7 +158,7 @@ const Hero = () => {
             </h1>
           </div>
 
-          <div className="flex-1" ref={productWrapperRef}>
+          <div className="flex-1 z-1" ref={productWrapperRef}>
             <div className="flex justify-center product-pin-section">
               <div className="relative lg:w-[500px] lg:h-[500px] md:w-[250px] md:h-[280px] w-[280px] h-[250px] productWrapperRef">
                 <Image
@@ -223,11 +225,11 @@ const Hero = () => {
         </div>
 
         {/* ---------------- SCROLL SECTIONS ---------------- */}
-        <div className="heroSec3 section">
+        <div className="heroSec3 ">
           {scrollContent.map((item, index) => (
             <div
               key={index}
-              className="h-[calc(100vh-64px)] flex items-start md:items-center"
+              className="h-[calc(100vh-64px)] flex items-start md:items-center bg-white section z-0"
               ref={addToRefs}
             >
               <div className="container">
@@ -243,7 +245,9 @@ const Hero = () => {
           ))}
         </div>
 
-        <div className="sectionEnd"></div>
+        {/* <ScrollSection /> */}
+
+        <div className="sectionEnd h-[calc(100vh-64px)]"></div>
       </div>
       {/* <div className="absolute top-0 left-0 w-full h-[100vh] flex justify-center product-pin-section ">
           <div className="relative lg:w-[500px] lg:h-[500px] md:w-[250px] md:h-[280px] w-[280px] h-[250px] productWrapperRef">

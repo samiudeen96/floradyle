@@ -46,7 +46,7 @@ h1 {
 } */
  
 .section {
-  @apply px-4 sm:px-6 lg:px-12;
+  @apply px-4 sm:px-6 lg:px-12 py-4;
 }
 
 .animated-button {
