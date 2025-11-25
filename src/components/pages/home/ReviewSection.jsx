@@ -18,8 +18,8 @@ const ReviewSection = () => {
        1️⃣ Pin the first-content smoothly
       --------------------------------------------- */
       ScrollTrigger.create({
-        trigger: ".first-content",
-        start: "top-=68 top+=68px",
+        trigger: containerRef.current,
+        start: "top-=68px top+=64px",
         endTrigger: ".forth-content",
         end: "bottom bottom",
         pin: true,
@@ -78,10 +78,10 @@ const ReviewSection = () => {
   }, []); // Added empty dependency array
 
   return (
-    <div ref={containerRef} className='container'>
+    <div  className='container'>
 
       {/* FIRST SECTION (PINNED) */}
-      <div className='h-[calc(100vh-64px)] flex items-center justify-center first-content relative'>
+      <div className='h-[calc(100vh-64px)] flex items-center justify-center first-content relative bg-amber-200' ref={containerRef}>
         <div className='text-center leading-none z-0 doorText absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full'>
           <p className='md:text-[200px] text-[55px] font-semibold left-door'>What are</p>
           <p className='md:text-[200px] text-[55px] font-semibold right-door'>they saying</p>
