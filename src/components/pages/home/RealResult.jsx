@@ -253,11 +253,13 @@ useGSAP(
         y: 50,
         ease: "none",
         scrollTrigger: { 
-          trigger: image3Ref.current,
-          start:  device === "mobile" ? "bottom-=800 center+=400" : "bottom-=100 center+=400",
-          end: "bottom-=700 center+=100",
+          trigger: ".imageContainerRef",
+          start:  "top center+=200",
+          // start:  device === "mobile" ? "top center+=300" : "top center+=300",
+          end: "top center-=200",
+          // end: "bottom-=700 center-=150",
           scrub: true,
-          // markers: true
+          markers: true
         },
       }
     );
@@ -351,14 +353,15 @@ useGSAP(
 
       {/* SCROLL ANIMATED SECTION */}
       <div
-        ref={image3Ref}
-        className="relative bg-[#D4DCCF] min-h-[170vh] rounded-2xl flex flex-col justify-between items-center p-5 mb-56"
+        
+        className="relative bg-[#D4DCCF] min-h-[170vh] rounded-2xl flex flex-col justify-between items-center p-4 mb-56 imageContainerRef"
       >
         <h3 className="pt-30">
           <strong>Real result</strong> you <br /> can see and feel.
         </h3>
 
         <Image
+        ref={image3Ref}
           className="z-0 image3"
           src="/imageText3.avif"
           width={700}
@@ -367,7 +370,7 @@ useGSAP(
         />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full z-10">
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-4">
             <div className="min-h-72 flex flex-col justify-between p-10 bg-white/25 rounded-lg">
               <h4>92.3%</h4>
               <div>
@@ -385,7 +388,7 @@ useGSAP(
           </div>
 
           <div className=" backdrop-blur-2xl overflow-hidden rounded-lg md:col-span-2">
-            <div className=" h-full pt-10 bg-black/5 px-10   flex flex-col justify-between">
+            <div className="h-full pt-10 bg-black/5 px-10 flex flex-col justify-between">
             <div>
               <h4>Science backed skincare.</h4>
               <p className="mt-4">
