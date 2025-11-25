@@ -105,9 +105,59 @@
 // }
 
 
+// "use client";
+
+// import { useLayoutEffect } from "react";
+// import gsap from "gsap";
+// import { ScrollSmoother } from "gsap/ScrollSmoother";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
+
+// export default function SmoothScrollProvider({ children }) {
+//   useLayoutEffect(() => {
+//     let ctx = gsap.context(() => {
+//       const smoother = ScrollSmoother.create({
+//         wrapper: "#smooth-wrapper",
+//         content: "#smooth-content",
+//         smooth: 1.2,
+//         smoothTouch: 0.12,
+//         normalizeScroll: false,
+//         ignoreMobileResize: true,
+//       });
+
+//       // VERY IMPORTANT
+//       ScrollTrigger.scrollerProxy("#smooth-content", {
+//         scrollTop(value) {
+//           return arguments.length
+//             ? smoother.scrollTop(value)
+//             : smoother.scrollTop();
+//         },
+//         getBoundingClientRect() {
+//           return {
+//             top: 0,
+//             left: 0,
+//             width: window.innerWidth,
+//             height: window.innerHeight,
+//           };
+//         },
+//       });
+
+//       ScrollTrigger.addEventListener("refresh", () => smoother.refresh());
+//       ScrollTrigger.refresh();
+//     });
+
+//     return () => ctx.revert();
+//   }, []);
+
+//   return children;
+// }
+
+
+
 "use client";
 
-import { useLayoutEffect } from "react";
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -115,40 +165,37 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
 
 export default function SmoothScrollProvider({ children }) {
-  useLayoutEffect(() => {
-    let ctx = gsap.context(() => {
-      const smoother = ScrollSmoother.create({
-        wrapper: "#smooth-wrapper",
-        content: "#smooth-content",
-        smooth: 1.2,
-        smoothTouch: 0.12,
-        normalizeScroll: true,
-        ignoreMobileResize: true,
-      });
-
-      // VERY IMPORTANT
-      ScrollTrigger.scrollerProxy("#smooth-content", {
-        scrollTop(value) {
-          return arguments.length
-            ? smoother.scrollTop(value)
-            : smoother.scrollTop();
-        },
-        getBoundingClientRect() {
-          return {
-            top: 0,
-            left: 0,
-            width: window.innerWidth,
-            height: window.innerHeight,
-          };
-        },
-      });
-
-      ScrollTrigger.addEventListener("refresh", () => smoother.refresh());
-      ScrollTrigger.refresh();
+  useGSAP(() => {
+    // Create smoother
+    const smoother = ScrollSmoother.create({
+      wrapper: "#smooth-wrapper",
+      content: "#smooth-content",
+      smooth: 1.2,
+      smoothTouch: 0.12,
+      normalizeScroll: false, // 🔥 FIXES browser zoom issue
+      ignoreMobileResize: true,
     });
 
-    return () => ctx.revert();
-  }, []);
+    // Required for ScrollTrigger
+    ScrollTrigger.scrollerProxy("#smooth-content", {
+      scrollTop(value) {
+        return arguments.length
+          ? smoother.scrollTop(value)
+          : smoother.scrollTop();
+      },
+      getBoundingClientRect() {
+        return {
+          top: 0,
+          left: 0,
+          width: window.innerWidth,
+          height: window.innerHeight,
+        };
+      },
+    });
+
+    ScrollTrigger.addEventListener("refresh", () => smoother.refresh());
+    ScrollTrigger.refresh();
+  });
 
   return children;
 }

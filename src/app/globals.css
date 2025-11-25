@@ -227,17 +227,11 @@ position: fixed;
 
 #smooth-wrapper {
   overflow: hidden;
-  /* height: 100vh; */ /* REMOVED - this was causing the pinning issue */
 }
 
 #smooth-content {
   will-change: transform;
 }
-
-
-/* .heroSec3 {
-  height: calc(100vh * 5);
-} */
 
 
 
