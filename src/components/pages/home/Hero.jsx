@@ -82,13 +82,13 @@ const Hero = () => {
 
       ScrollTrigger.create({
         trigger: ".product-pin-section",
-        start: "top top+=245px",
+        start: "top top+=350px",
         endTrigger: ".sectionEnd",
         end: "top bottom", // pin until all sections scroll past
         pin: true,
         pinSpacing: false,
         pinType: "transform", // required if using ScrollSmoother
-        // markers: true,
+        markers: true,
       });
 
       // ✅ PIN EACH SCROLL SECTION AFTER product pin
@@ -164,7 +164,7 @@ const Hero = () => {
     <section className="relative">
       <div className="h-full w-full">
         <div
-          className=" section h-[100vh] w-full flex flex-col sm:flex-row items-center justify-between heroSec1"
+          className=" section h-[calc(100vh-64px)] w-full flex flex-col sm:flex-row items-center justify-between heroSec1 bg-amber-100"
           ref={handRef}
         >
           {/* <div className="text1 opacity-0 w-full"> */}
