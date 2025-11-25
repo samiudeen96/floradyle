@@ -24,7 +24,7 @@ const Hero = () => {
     }
   };
 
-  useGSAP(() => {
+  useGSAP(() => { 
     const ctx = gsap.context(() => {
       const chars = blurTextRef.current.querySelectorAll(".char");
 
@@ -33,11 +33,11 @@ const Hero = () => {
         .timeline()
         .fromTo(
           ".text1",
-          { opacity: 0, y: device === "mobile" ? "50vh" : "" },
-          { opacity: 1,  duration: 1, ease: "power1.inOut" }
+          { opacity: 0, y: "0%" },
+          { opacity: 1, duration: 1, ease: "power1.inOut" }
         )
         .to(".text1", {
-          y: device === "mobile" ? "10vh" : "-28vh",
+          y: device === "mobile" ? "-32vh" : "-28vh",
           duration: 1.4,
           ease: "power1.inOut",
         });
@@ -77,19 +77,20 @@ const Hero = () => {
       // });
 
       // TOTAL height of all sections + first section
-      const sectionHeight = window.innerHeight + 48; // adjust if header exists
-      const totalHeight = (scrollRefs.current.length + 6) * sectionHeight;
+const sectionHeight = window.innerHeight + 48; // adjust if header exists
+const totalHeight = (scrollRefs.current.length + 6) * sectionHeight;
 
-      ScrollTrigger.create({
-        trigger: ".product-pin-section",
-        start: "top top+=245px",
-        endTrigger: ".sectionEnd",
-        end: "top bottom", // pin until all sections scroll past
-        pin: true,
-        pinSpacing: false,
-        pinType: "transform", // required if using ScrollSmoother
-        // markers: true,
-      });
+ScrollTrigger.create({
+  trigger: ".product-pin-section",
+  start: "top top",
+  // endTrigger: ".sectionEnd",
+  end: "+=" + totalHeight, // pin until all sections scroll past
+  pin: true,
+  pinSpacing: true,
+  pinType: "transform", // required if using ScrollSmoother
+  // markers: true,
+});
+
 
       // ✅ PIN EACH SCROLL SECTION AFTER product pin
       scrollRefs.current.forEach((section) => {
@@ -99,7 +100,7 @@ const Hero = () => {
           end: "bottom top",
           pin: true,
           snap: 1,
-          pinSpacing: true,
+          pinSpacing: true
         });
       });
 
@@ -108,17 +109,17 @@ const Hero = () => {
       gsap.fromTo(
         ".productWrapperRef",
         {
-          yPercent: device === "tablet" ? -30 : "", // initial vertical offset
+          yPercent: device === "mobile" ? 100 : device === "tablet" ? -30 : 28, // initial vertical offset
           // y: "22vh",
-          // xPercent: -50, // center horizontally
-          // left: "50%",
-          // position: "absolute",
+          xPercent: -50, // center horizontally
+          left: "50%",
+          position: "absolute",
         },
         {
           // yPercent: device === "mobile" ? 170 : device === "tablet" ? 35 : 30, // final vertical offset
           y:
             device === "mobile"
-              ? "100%"
+              ? "130%"
               : device === "tablet"
               ? "-20%"
               : "100%",
@@ -133,18 +134,18 @@ const Hero = () => {
         }
       );
 
-      // gsap.to(productWrapperRef.current, {
-      //   y: device === "mobile" ? "-20%" : device === "tablet" ? "-20%" : "-60%",
-      //   x: device === "mobile" ? 0 : device === "tablet" ? 150 : 330,
-      //   ease: "power1.inOut",
-      //   scrollTrigger: {
-      //     trigger: ".heroSec2",
-      //     start: "center+=100 center+=100",
-      //     end: "center top+=200",
-      //     scrub: true,
-      //     // markers: true,
-      //   },
-      // });
+      gsap.to(productWrapperRef.current, {
+        y: device === "mobile" ? "-20%" : device === "tablet" ? "-20%" : "-60%",
+        x: device === "mobile" ? 0 : device === "tablet" ? 150 : 330,
+        ease: "power1.inOut",
+        scrollTrigger: {
+          trigger: ".heroSec2",
+          start: "center+=100 center+=100",
+          end: "center top+=200",
+          scrub: true,
+          // markers: true,
+        },
+      });
     });
 
     ScrollTrigger.refresh(); // IMPORTANT
@@ -164,35 +165,12 @@ const Hero = () => {
     <section className="relative">
       <div className="h-full w-full">
         <div
-          className=" section h-[100vh] w-full flex flex-col sm:flex-row items-center justify-between heroSec1"
+          className=" section h-[100vh] w-full flex items-center justify-between heroSec1"
           ref={handRef}
         >
-          {/* <div className="text1 opacity-0 w-full"> */}
-          <div className="text1 opacity-0 flex-1">
-            <h1>
-              Your healthiest <br className="hidden sm:block" /> skin revealed.
-            </h1>
-          </div>
-
-          <div className="flex-1">
-            <div className="flex justify-center product-pin-section">
-              <div className="relative lg:w-[500px] lg:h-[500px] md:w-[250px] md:h-[280px] w-[280px] h-[250px] productWrapperRef">
-                <Image
-                  ref={productWrapperRef}
-                  className="object-contain"
-                  src="/bottle.png"
-                  fill
-                  alt="Product"
-                />
-              </div>
-            </div>
-          </div>
-
-          <div className="flex-1">
-            <p className="md:block hidden">
-              We strip away the unnecessary to focus on what truly works.
-            </p>
-          </div>
+          <h1 className="text1 opacity-0">
+            Your healthiest <br /> skin revealed.
+          </h1>
         </div>
         {/* </div> */}
 
@@ -261,9 +239,13 @@ const Hero = () => {
           ))}
         </div>
 
-        <div className="sectionEnd"></div>
+        <div>
+
+        </div>
+
+
       </div>
-      {/* <div className="absolute top-0 left-0 w-full h-[100vh] flex justify-center product-pin-section ">
+          {/* <div className="absolute top-0 left-0 w-full h-[100vh] flex justify-center product-pin-section ">
           <div className="relative lg:w-[500px] lg:h-[500px] md:w-[250px] md:h-[280px] w-[280px] h-[250px] productWrapperRef">
             <Image
               ref={productWrapperRef}

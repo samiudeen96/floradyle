@@ -39,7 +39,7 @@ const Header = () => {
         </div>
 
         {/* Menu */}
-        <ul className="sm:flex gap-10 items-center justify-center hidden">
+        <ul className="sm:flex gap-8 items-center justify-center hidden">
           {menu.map((item, index) => (
             <li key={index}>
               
