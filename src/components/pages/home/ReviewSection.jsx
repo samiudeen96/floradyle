@@ -10,26 +10,25 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ReviewSection = () => {
 
-  const reviewRef = useRef();
-  const hiddenRef = useRef();
+  const containerRef = useRef(null)
+  const reviewRef = useRef(null);
 
   useGSAP(() => {
     const ctx = gsap.context(() => {
 
-       /* ---------------------------------------------
+      /* ---------------------------------------------
        1️⃣ Pin the first-content smoothly
       --------------------------------------------- */
       ScrollTrigger.create({
         trigger: reviewRef.current,
         start: "top top+=64px", // Account for header height
         endTrigger: ".forth-content",
-        end: "center-=1.5% bottom", // End when forth-content reaches top
+        end: "bottom bottom", // End when forth-content reaches top
         pin: true,
         pinSpacing: false,
         scrub: 0.5,
         markers: true
       });
-
 
       /* ---------------------------------------------
        2️⃣ Door opening animation (triggered by scroll)
@@ -68,29 +67,29 @@ const ReviewSection = () => {
           scale: 1,
           scrollTrigger: {
             trigger: ".third-content",
-          start: "top top+=90px",    // starts as second section enters
-          end: "top top-=500px",
+            start: "top top+=90px", 
+            end: "top top-=500px",
             scrub: 1,
           }
         }
       );
 
-    }, reviewRef);
+    }, containerRef);
 
     return () => ctx.revert();
   }, []); // Added empty dependency array
 
   return (
-    <div  className='container'>
+    <div  className='container' ref={containerRef}>
 
       {/* FIRST SECTION (PINNED) */}
       <div className='h-[calc(100vh-64px)] flex items-center justify-center first-content relative' ref={reviewRef}>
-        <div className='text-center leading-none z-0 flex flex-col items-center justify-center doorText h-full w-full ' >
+        <div className='text-center leading-none z-0 doorText absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full'>
           <p className='md:text-[200px] text-[55px] font-semibold left-door'>What are</p>
           <p className='md:text-[200px] text-[55px] font-semibold right-door'>they saying</p>
         </div>
 
-        <div className='hiddenContent text-center flex flex-col items-center justify-center absolute top-0 left-0 h-full w-full ' >
+        <div className='hiddenContent text-center'>
           <div className='flex gap-1 items-center justify-center'>
             {Array.from({ length: 5 }).map((_, index) => (
               <Image
@@ -112,7 +111,6 @@ const ReviewSection = () => {
             ))}
           </div>
         </div>
-
       </div>
 
       {/* REVIEWS GRID */}
@@ -142,11 +140,11 @@ const ReviewSection = () => {
       </div>
 
       {/* EMPTY THIRD SECTION TO RELEASE PIN */}
-       <div className='min-h-[100vh] third-content  bg-amber-200'>
+      <div className='min-h-[calc(100dvh-64px)] flex items-center justify-center third-content opacity-0'>
         
       </div>
       
-      <div className='min-h-[100vh] forth-content  bg-red-200'>
+      <div className='min-h-[calc(100dvh-64px)] flex items-center justify-center forth-content opacity-0'>
       </div>
     </div>
   );
