@@ -51,7 +51,7 @@ h1 {
 
 .animated-button {
   @apply cursor-pointer  
-         px-2 py-2 rounded-md text-xs
+         px-2 py-2 rounded-md text-[14px]
         font-medium relative overflow-hidden max-w-fit;
 }
 

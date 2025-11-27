@@ -110,7 +110,7 @@ useGSAP(
               ? "100%"
               : device === "tablet"
               ? "-20%"
-              : "80%",
+              : "50%",
           scale:
             device === "mobile"
               ? 0.8
@@ -131,7 +131,7 @@ useGSAP(
               ? "-20%"
               : device === "tablet"
               ? "-20%"
-              : "-80%",
+              : "-50%",
           x:
             device === "mobile"
               ? 0
