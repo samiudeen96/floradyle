@@ -148,6 +148,7 @@ useGSAP(
         });
 
 
+        // hand movement
         gsap.to(handRef.current, {
           y: 1000,
           autoAlpha: 0,    

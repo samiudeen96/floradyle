@@ -59,7 +59,7 @@
 
 //             <div className="grid grid-cols-2 mt-20 gap-20">
 //               {/* LEFT IMAGE */}
-//               <div className="relative w-full h-[800px] rounded-2xl overflow-hidden bg-red-200">
+//               <div className="relative w-full h-[800px] rounded-2xl overflow-hidden ">
 //                 <Image
 //                   src="/image1.avif"
 //                   alt=""
@@ -118,7 +118,7 @@
 //               near its natural best.
 //             </p>
 //           </div>
-//           <div className="relative w-full h-[800px] bg-red-200 rounded-2xl overflow-hidden">
+//           <div className="relative w-full h-[800px]  rounded-2xl overflow-hidden">
 //             <Image
 //               className="object-cover"
 //               src="/imageText1.avif"
@@ -129,7 +129,7 @@
 //         </div>
 
 //         <div className="grid grid-cols-2 mt-20 gap-20" >
-//           <div className="relative w-full h-[800px] bg-red-200 rounded-2xl overflow-hidden">
+//           <div className="relative w-full h-[800px]  rounded-2xl overflow-hidden">
 //             <Image
 //               className="object-cover"
 //               src="/imageText2.avif"
@@ -286,7 +286,7 @@ useGSAP(
 
         <div className="grid grid-cols-1 md:grid-cols-2 md:mt-20 mt-10 gap-10 md:gap-20">
 
-          <div className="relative w-full md:h-[800px] h-[400px] rounded-2xl overflow-hidden bg-red-200">
+          <div className="relative w-full md:h-[800px] h-[400px] rounded-2xl overflow-hidden ">
             <Image
               src="/image1.avif"
               alt=""
@@ -335,11 +335,11 @@ useGSAP(
             overwhelmed, irritated, and nowhere near its natural best.
           </p>
         </div>
-        <div className="relative w-full md:h-[800px] h-[400px] bg-red-200 rounded-2xl overflow-hidden">
+        <div className="relative w-full md:h-[800px] h-[400px]  rounded-2xl overflow-hidden">
           <Image className="object-cover" src="/imageText1.avif" fill alt="" />
         </div>
 
-        <div className="relative w-full md:h-[800px] h-[400px] bg-red-200 rounded-2xl overflow-hidden">
+        <div className="relative w-full md:h-[800px] h-[400px]  rounded-2xl overflow-hidden">
           <Image className="object-cover" src="/imageText2.avif" fill alt="" />
         </div>
         <div className="flex flex-col justify-center">
@@ -354,7 +354,7 @@ useGSAP(
       {/* SCROLL ANIMATED SECTION */}
       <div
         
-        className="relative bg-[#D4DCCF] rounded-2xl flex flex-col justify-between items-center p-4 imageContainerRef mb-56"
+        className="relative bg-background rounded-2xl flex flex-col justify-between items-center p-4 imageContainerRef mb-56"
       >
         <h3 className="pt-30">
           <strong>Real result</strong> you <br /> can see and feel.

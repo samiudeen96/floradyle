@@ -124,7 +124,7 @@ useGSAP(
               <div>{item.content}</div>
 
               <div className='flex gap-2'>
-                <div className='relative w-12 h-12 bg-amber-200 rounded-lg overflow-hidden'>
+                <div className='relative w-12 h-12 rounded-lg overflow-hidden'>
                   <Image className='object-cover' src={item.profileImg} fill alt={item.name} />
                 </div>
                 <div>
