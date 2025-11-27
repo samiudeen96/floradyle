@@ -105,10 +105,10 @@ useGSAP(
         .to(".productWrapperRef", {
           y:
             device === "mobile"
-              ? "90%"
+              ? "100%"
               : device === "tablet"
               ? "-20%"
-              : "100%",
+              : "80%",
           scale:
             device === "mobile"
               ? 0.8
@@ -129,7 +129,7 @@ useGSAP(
               ? "-20%"
               : device === "tablet"
               ? "-20%"
-              : "-100%",
+              : "-80%",
           x:
             device === "mobile"
               ? 0
