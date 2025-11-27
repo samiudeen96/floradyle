@@ -93,10 +93,11 @@ useGSAP(
               : 330,
           ease: "power1.inOut",
           scrollTrigger: {
-            trigger: ".heroSec2",
-            start: "center+=100 center+=100",
-            end: "center top",
+            trigger: ".heroSec3",
+            start: "top bottom", // When top of the content hits bottom of the viewport
+            end: "top center",
             scrub: true,
+            markers: true
           },
         })
 
