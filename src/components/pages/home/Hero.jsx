@@ -12,6 +12,7 @@ import ScrollSection from "@/components/animations/ScrollSection";
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
+  const containerRef = useRef(null)
   const blurTextRef = useRef(null);
   const productWrapperRef = useRef(null);
   const scrollRefs = useRef([]);
@@ -25,17 +26,20 @@ const Hero = () => {
     }
   };
 
-  useGSAP(() => {
+useGSAP(
+  () => {
     const ctx = gsap.context(() => {
+
       const chars = blurTextRef.current.querySelectorAll(".char");
 
-      // TEXT 1 Animation (Responsive Y movement)
-      gsap
-        .timeline()
+      // -------------------------------
+      // TEXT 1 Animation
+      // -------------------------------
+      gsap.timeline()
         .fromTo(
           ".text1",
           { opacity: 0, y: device === "mobile" ? "40vh" : "" },
-          { opacity: 1,  duration: 1, ease: "power1.inOut" }
+          { opacity: 1, duration: 1, ease: "power1.inOut" }
         )
         .to(".text1", {
           y: device === "mobile" ? "2vh" : "-35vh",
@@ -43,7 +47,9 @@ const Hero = () => {
           ease: "power1.inOut",
         });
 
-      // CHARS BLUR Animation (Responsive stagger + pin)
+      // -------------------------------
+      // CHARS BLUR Animation
+      // -------------------------------
       gsap.fromTo(
         chars,
         { opacity: 0, filter: "blur(8px)" },
@@ -54,88 +60,104 @@ const Hero = () => {
           ease: "power2.out",
           scrollTrigger: {
             trigger: ".heroSec2",
-            start:
-              device === "mobile" ? "top-=90 top+=130" : "top-=200 top+=200",
+            start: device === "mobile"
+              ? "top-=90 top+=130"
+              : "top-=200 top+=200",
             end: "bottom center",
             scrub: true,
-            pin: true, // disable pin on mobile
+            pin: true,
             pinSpacing: true,
-            // markers: true
           },
         }
       );
 
-      // TOTAL height of all sections + first section
-      const sectionHeight = window.innerHeight + 48; // adjust if header exists
-      const totalHeight = (scrollRefs.current.length + 6) * sectionHeight;
-
+      // -------------------------------
+      // PIN FIRST PRODUCT SECTION
+      // -------------------------------
       ScrollTrigger.create({
         trigger: ".product-pin-section",
-        start: "center-=52px center", 
+        start: "center-=52px center",
         endTrigger: ".sectionEnd",
-        end: "bottom-=170 top", // pin until all sections scroll past
+        end: "bottom-=170 top",
         pin: true,
-        pinType: "transform", // required if using ScrollSmoother
+        pinType: "transform",
         pinSpacing: false,
-        // markers: true,
       });
 
-      // ✅ PIN EACH SCROLL SECTION AFTER product pin
+      // -------------------------------
+      // PIN EACH SCROLL SECTION AFTER
+      // -------------------------------
       scrollRefs.current.forEach((section) => {
         ScrollTrigger.create({
           trigger: section,
           start: "top top+=64px",
           end: "bottom top",
           pin: true,
-          pinType: "transform", // required if using ScrollSmoother
-          // snap: 1,
+          pinType: "transform",
           pinSpacing: scrollRefs.current.length === 4 ? true : false,
-          // markers: true,
         });
       });
 
-      // PRODUCT INITIAL ANIMATION (Responsive start)
-
-            gsap
-        .timeline()
-        .to(
-          ".productWrapperRef",
-          {
-                y:
+      // -------------------------------
+      // PRODUCT INITIAL ANIMATION
+      // -------------------------------
+      gsap.timeline()
+        .to(".productWrapperRef", {
+          y:
             device === "mobile"
               ? "90%"
               : device === "tablet"
               ? "-20%"
               : "100%",
+          scale:
+            device === "mobile"
+              ? 0.8
+              : device === "tablet"
+              ? 0.8
+              : 1,
           ease: "power1.inOut",
-          scale: device === "mobile" ? 0.8 : device === "tablet" ? 0.8 : 1,
           scrollTrigger: {
             trigger: ".heroSec1",
             start: "top-=64px top",
             end: "bottom+=100 center",
             scrub: true,
-            // markers: true, // enable for debugging
           },
-          })
-
+        })
         .to(productWrapperRef.current, {
-        y: device === "mobile" ? "-20%" : device === "tablet" ? "-20%" : "-100%",
-        x: device === "mobile" ? 0 : device === "tablet" ? 150 : 330,
-        ease: "power1.inOut",
-        scrollTrigger: {
-          trigger: ".heroSec2",
-          start: "center+=100 center+=100",
-          end: "center top",
-          scrub: true,
-          // markers: true,
-        },
-      });
-    });
+          y:
+            device === "mobile"
+              ? "-20%"
+              : device === "tablet"
+              ? "-20%"
+              : "-100%",
+          x:
+            device === "mobile"
+              ? 0
+              : device === "tablet"
+              ? 150
+              : 330,
+          ease: "power1.inOut",
+          scrollTrigger: {
+            trigger: ".heroSec2",
+            start: "center+=100 center+=100",
+            end: "center top",
+            scrub: true,
+          },
+        });
 
-    ScrollTrigger.refresh(); // IMPORTANT
+      // refresh AFTER all triggers created
+      ScrollTrigger.refresh();
+    }, containerRef);
 
     return () => ctx.revert();
-  }, [device]); // ✅ device added here
+  },
+
+  {
+    scope: containerRef,
+    dependencies: [device],
+  }
+);
+
 
   // SINGLE sentence (for mobile)
   const oneLine =
@@ -146,7 +168,7 @@ const Hero = () => {
   const line2 = "Less bottles. Better skin. Smarter routine.";
 
   return (
-    <section className="relative">
+    <section className="relative" ref={containerRef}>
       <div className="h-full w-full">
         <div
           className=" section h-[calc(100vh-64px)] w-full flex flex-col sm:flex-row items-center justify-between heroSec1 "

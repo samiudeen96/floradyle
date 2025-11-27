@@ -13,17 +13,17 @@ const ReviewSection = () => {
   const containerRef = useRef(null)
   const reviewRef = useRef(null);
 
-  useGSAP(() => {
+useGSAP(
+  () => {
     const ctx = gsap.context(() => {
-
       /* ---------------------------------------------
        1️⃣ Pin the first-content smoothly
       --------------------------------------------- */
       ScrollTrigger.create({
         trigger: reviewRef.current,
-        start: "top top+=64px", // Account for header height
+        start: "top-=9% top+=64px",
         endTrigger: ".forth-content",
-        end: "bottom bottom", // End when forth-content reaches top
+        end: "bottom bottom",
         pin: true,
         pinSpacing: false,
         scrub: 0.5,
@@ -31,59 +31,57 @@ const ReviewSection = () => {
       });
 
       /* ---------------------------------------------
-       2️⃣ Door opening animation (triggered by scroll)
+       2️⃣ Door opening animation
       --------------------------------------------- */
       gsap.to(".left-door", {
-        x: -800,               // Left door goes LEFT
+        x: -800,
         opacity: 0,
         scrollTrigger: {
           trigger: ".third-content",
-          start: "top top+=90px",    // starts as second section enters
+          start: "top top+=90px",
           end: "top top-=500px",
           scrub: 1,
-          // markers: true
-        }
+        },
       });
 
       gsap.to(".right-door", {
-        x: 800,                // Right door goes RIGHT
+        x: 800,
         opacity: 0,
         scrollTrigger: {
           trigger: ".third-content",
-          start: "top top+=90px", 
+          start: "top top+=90px",
           end: "top top-=500px",
           scrub: 1,
-          // markers: true
-        }
+        },
       });
 
-      gsap.fromTo(".hiddenContent", 
-        {
-          opacity: 0,
-          scale: 0,
-        },
+      gsap.fromTo(
+        ".hiddenContent",
+        { opacity: 0, scale: 0 },
         {
           opacity: 1,
           scale: 1,
           scrollTrigger: {
             trigger: ".third-content",
-            start: "top top+=90px", 
+            start: "top top+=90px",
             end: "top top-=500px",
             scrub: 1,
-          }
+          },
         }
       );
-
     }, containerRef);
 
     return () => ctx.revert();
-  }, []); // Added empty dependency array
+  },
+  { scope: containerRef, dependencies: [] }
+);
+ // Added empty dependency array
 
   return (
     <div  className='container' ref={containerRef}>
 
       {/* FIRST SECTION (PINNED) */}
-      <div className='h-[calc(100vh-64px)] flex items-center justify-center first-content relative' ref={reviewRef}>
+      <div className='h-[calc(100vh-64px)] flex items-center justify-center first-content relative ' ref={reviewRef}>
         <div className='text-center leading-none z-0 doorText absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full'>
           <p className='md:text-[200px] text-[55px] font-semibold left-door'>What are</p>
           <p className='md:text-[200px] text-[55px] font-semibold right-door'>they saying</p>

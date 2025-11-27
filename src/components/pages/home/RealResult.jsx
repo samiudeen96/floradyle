@@ -354,7 +354,7 @@ useGSAP(
       {/* SCROLL ANIMATED SECTION */}
       <div
         
-        className="relative bg-[#D4DCCF] min-h-[170vh] rounded-2xl flex flex-col justify-between items-center p-4 imageContainerRef"
+        className="relative bg-[#D4DCCF] rounded-2xl flex flex-col justify-between items-center p-4 imageContainerRef mb-56"
       >
         <h3 className="pt-30">
           <strong>Real result</strong> you <br /> can see and feel.

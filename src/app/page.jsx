@@ -10,7 +10,6 @@ export default function Home() {
       <StackedCards />
       <RealResult /> 
       <ReviewSection  />
-      <RealResult /> 
     </div>
   );
 }

@@ -11,6 +11,7 @@ import { useDeviceType } from "@/hooks/useDeviceType";
 gsap.registerPlugin(ScrollTrigger);
 
 const StackedCards = () => {
+  const containerRef = useRef(null)
   const stackedSectionRef = useRef(null);
   const cardsRef = useRef([]);
   const device = useDeviceType();
@@ -80,7 +81,7 @@ const StackedCards = () => {
   }, [mounted, device]);
 
   return (
-    <div className="container mt-20" >
+    <div className="container mt-20" ref={containerRef}>
       <div
         ref={stackedSectionRef}
         className="section h-[calc(100vh-64px)] grid grid-cols-1 md:grid-cols-2 md:items-center gap-5 md:gap-10 "
