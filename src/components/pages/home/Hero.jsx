@@ -89,7 +89,7 @@ const Hero = () => {
           pin: true,
           pinType: "transform", // required if using ScrollSmoother
           // snap: 1,
-          pinSpacing: false,
+          pinSpacing: scrollRefs.current.length === 4 ? true : false,
           // markers: true,
         });
       });
@@ -222,11 +222,12 @@ const Hero = () => {
                 </span>
               ))}
             </span>
+
           </h3>
         </div>
 
         {/* ---------------- SCROLL SECTIONS ---------------- */}
-        <div className="heroSec3 ">
+        <div className="heroSec3">
           {scrollContent.map((item, index) => (
             <div
               key={index}
