@@ -196,9 +196,9 @@ useGSAP(
           </div>
 
           <div className="flex-1">
-            <p className="md:block hidden">
+            <h4 className="md:block hidden">
               We strip away the unnecessary to focus on what truly works.
-            </p>
+            </h4>
           </div>
         </div>
         {/* </div> */}

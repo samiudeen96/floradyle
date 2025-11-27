@@ -101,7 +101,7 @@ useGSAP(
           </div>
           <p className='mt-2'>2500+ five-star reviews</p>
           <h3 className='mt-4'>hidden content</h3>
-          <div className='grid grid-cols-6 gap-2 md:mt-15 mt-10'>
+          <div className='grid grid-cols-6 gap-2 md:mt-15 mt-8'>
             {review.map((item, index) => (
               <div key={index} className='relative md:w-[200px] md:h-[200px] w-[50px] h-[50px]  rounded-lg overflow-hidden'>
                 <Image className='object-cover' src={item.profileImg} fill alt={item.profileImg} />

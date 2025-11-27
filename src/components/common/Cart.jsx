@@ -7,7 +7,7 @@ const Cart = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [count, setCount] = useState(1);
   const price = 85;
-
+const cartRef = useRef(null);
   const backdropRef = useRef(null);
   const panelRef = useRef(null);
 
@@ -44,7 +44,7 @@ const Cart = () => {
     <>
       {/* Cart Button */}
       <div
-        className="flex items-center gap-1 cursor-pointer"
+        className="flex items-center gap-1 cursor-pointer" ref={cartRef}
         onClick={() => setIsOpen(true)}
       >
         <p>Bag</p>

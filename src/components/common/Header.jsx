@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <header className="sticky top-0 left-0 w-full z-50">
+    <header className="fixed top-0 left-0 w-full z-50">
       <section
         className="h-16 lg:px-12 sm:px-6 px-4 flex 
         items-center justify-between
