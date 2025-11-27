@@ -8,9 +8,9 @@ export default function Home() {
     <div className="">
       {/* <Hero />
       <StackedCards />*/}
-      <RealResult /> 
+      {/* <RealResult />  */}
       <ReviewSection  />
-      {/* <RealResult /> */}
+      <RealResult />
     </div>
   );
 }
