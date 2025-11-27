@@ -36,8 +36,6 @@ useGSAP(
       // TEXT 1 Animation
       // -------------------------------
       gsap.timeline()
-
-
         .fromTo(
           ".text1",
           { opacity: 0, scale: 0.8, y: device === "mobile" ? "40vh" : "" },
@@ -47,60 +45,8 @@ useGSAP(
           y: device === "mobile" ? "2vh" : "-28vh",
           duration: 0.5,
           ease: "power1.inOut",
-        })
-
-        //         .fromTo(
-        //   ".img",
-        //   { opacity: 0, scale: 0.8, y: "50%" },
-        //   { opacity: 1, scale: 1, y: 0, duration:0.5, ease: "power1.out" }
-        // )
-
-
-                .to(".productWrapperRef", {
-          y:
-            device === "mobile"
-              ? "90%"
-              : device === "tablet"
-              ? "-20%"
-              : "50%",
-          scale:
-            device === "mobile"
-              ? 0.8
-              : device === "tablet"
-              ? 0.8
-              : 1,
-          ease: "power1.inOut",
-          scrollTrigger: {
-            trigger: ".heroSec1",
-            start: "top-=64px top+=70px",
-            end: "bottom+=100 center",
-            scrub: true,
-            // markers: true
-          },
-        })
-        .to(productWrapperRef.current, {
-          y:
-            device === "mobile"
-              ? "-8%"
-              : device === "tablet"
-              ? "-20%"
-              : "-25%",
-          x:
-            device === "mobile"
-              ? 0
-              : device === "tablet"
-              ? 150
-              : 330,
-          ease: "power1.inOut",
-          scrollTrigger: {
-            trigger: ".heroSec2",
-            start: "center+=100 center+=100",
-            end: "center top",
-            scrub: true,
-          },
-        })
-
-
+        });
+        
 
       // -------------------------------
       // CHARS BLUR Animation
@@ -157,51 +103,50 @@ useGSAP(
       // PRODUCT INITIAL ANIMATION
       // -------------------------------
 
-      // gsap.timeline()
+      gsap.timeline()
 
-      //   .to(".productWrapperRef", {
-      //     y:
-      //       device === "mobile"
-      //         ? "90%"
-      //         : device === "tablet"
-      //         ? "-20%"
-      //         : "50%",
-      //     scale:
-      //       device === "mobile"
-      //         ? 0.8
-      //         : device === "tablet"
-      //         ? 0.8
-      //         : 1,
-      //     ease: "power1.inOut",
-      //     scrollTrigger: {
-      //       trigger: ".heroSec1",
-      //       start: "top-=64px top+=70px",
-      //       end: "bottom+=100 center",
-      //       scrub: true,
-      //       markers: true
-      //     },
-      //   })
-      //   .to(productWrapperRef.current, {
-      //     y:
-      //       device === "mobile"
-      //         ? "-8%"
-      //         : device === "tablet"
-      //         ? "-20%"
-      //         : "-25%",
-      //     x:
-      //       device === "mobile"
-      //         ? 0
-      //         : device === "tablet"
-      //         ? 150
-      //         : 330,
-      //     ease: "power1.inOut",
-      //     scrollTrigger: {
-      //       trigger: ".heroSec2",
-      //       start: "center+=100 center+=100",
-      //       end: "center top",
-      //       scrub: true,
-      //     },
-      //   });
+        .to(".productWrapperRef", {
+          y:
+            device === "mobile"
+              ? "100%"
+              : device === "tablet"
+              ? "-20%"
+              : "50%",
+          scale:
+            device === "mobile"
+              ? 0.8
+              : device === "tablet"
+              ? 0.8
+              : 1,
+          ease: "power1.inOut",
+          scrollTrigger: {
+            trigger: ".heroSec1",
+            start: "top-=64px top",
+            end: "bottom+=100 center",
+            scrub: true,
+          },
+        })
+        .to(productWrapperRef.current, {
+          y:
+            device === "mobile"
+              ? "-20%"
+              : device === "tablet"
+              ? "-20%"
+              : "-50%",
+          x:
+            device === "mobile"
+              ? 0
+              : device === "tablet"
+              ? 150
+              : 330,
+          ease: "power1.inOut",
+          scrollTrigger: {
+            trigger: ".heroSec2",
+            start: "center+=100 center+=100",
+            end: "center top",
+            scrub: true,
+          },
+        });
 
 
         // hand movement
@@ -279,8 +224,8 @@ useGSAP(
 
           </div>
 
-          {/* <div className="flex-1 z-1" ref={productWrapperRef}>
-            <div className="flex flex-col items-center justify-center product-pin-section img">
+          <div className="flex-1 z-1" ref={productWrapperRef}>
+            <div className="flex flex-col items-center justify-center product-pin-section">
               <div className="relative lg:w-[500px] lg:h-[500px] md:w-[250px] md:h-[280px] w-[280px] h-[250px] productWrapperRef">
                 <Image
                   
@@ -291,10 +236,6 @@ useGSAP(
                 />
               </div>
             </div>
-          </div> */}
-
-          <div className="flex-1">
-
           </div>
 
           <div className="flex-1">
@@ -382,19 +323,8 @@ useGSAP(
               
       </div>
 
-      <div className="absolute top-0 left-0 h-[calc(100vh-64px)] w-full flex flex-col justify-end items-center " ref={productWrapperRef}>
-        <div className="flex flex-col items-center justify-center product-pin-section img">
-              <div className="relative lg:w-[500px] lg:h-[500px] md:w-[250px] md:h-[280px] w-[280px] h-[250px] productWrapperRef" >
-                <Image
-                  
-                  className="object-contain"
-                  src="/bottle.png"
-                  fill
-                  alt="Product"
-                />
-              </div>
-            </div>
-        <div className="relative w-full max-w-[1200px] md:max-w-[900px] sm:max-w-[700px] aspect-[1396/686] mx-auto img">
+      <div className="absolute top-0 left-0 h-[calc(100vh-64px)] w-full flex justify-center items-end" >
+        <div className="relative w-full max-w-[1200px] md:max-w-[900px] sm:max-w-[700px] aspect-[1396/686] mx-auto">
           <Image
             ref={handRef}
             className="object-contain object-bottom"
