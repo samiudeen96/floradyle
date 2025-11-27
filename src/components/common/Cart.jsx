@@ -7,7 +7,7 @@ const Cart = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [count, setCount] = useState(1);
   const price = 85;
-const cartRef = useRef(null);
+  const cartRef = useRef(null);
   const backdropRef = useRef(null);
   const panelRef = useRef(null);
 

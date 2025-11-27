@@ -101,7 +101,9 @@ useGSAP(
       // -------------------------------
       // PRODUCT INITIAL ANIMATION
       // -------------------------------
+
       gsap.timeline()
+
         .to(".productWrapperRef", {
           y:
             device === "mobile"
@@ -145,6 +147,20 @@ useGSAP(
           },
         });
 
+
+        gsap.to(handRef.current, {
+          y: 1000,
+          autoAlpha: 0,    
+          ease: "power1.inOut",
+          scrollTrigger: {
+            trigger: ".heroSec1",
+            start: "top-=50px top+=35px",
+            end: "bottom bottom-=30%",
+            scrub: true,
+            // markers: true
+          },
+        })
+
       // refresh AFTER all triggers created
       ScrollTrigger.refresh();
     }, containerRef);
@@ -172,7 +188,7 @@ useGSAP(
       <div className="h-full w-full">
         <div
           className=" section h-[calc(100vh-64px)] w-full flex flex-col sm:flex-row items-center justify-between heroSec1 "
-          ref={handRef}
+          
         >
           {/* <div className="text1 opacity-0 w-full"> */}
           <div className="text1 opacity-0 flex-1">
@@ -182,7 +198,7 @@ useGSAP(
           </div>
 
           <div className="flex-1 z-1" ref={productWrapperRef}>
-            <div className="flex justify-center product-pin-section">
+            <div className="flex flex-col items-center justify-center product-pin-section">
               <div className="relative lg:w-[500px] lg:h-[500px] md:w-[250px] md:h-[280px] w-[280px] h-[250px] productWrapperRef">
                 <Image
                   
@@ -196,9 +212,13 @@ useGSAP(
           </div>
 
           <div className="flex-1">
-            <h4 className="md:block hidden">
+            <div className="flex justify-end">
+              <div className="w-3/6 text-end">
+              <h5 className="md:block hidden">
               We strip away the unnecessary to focus on what truly works.
-            </h4>
+            </h5>
+            </div>
+            </div>
           </div>
         </div>
         {/* </div> */}
@@ -272,18 +292,23 @@ useGSAP(
         {/* <ScrollSection /> */}
 
         <div className="sectionEnd h-[calc(100vh-64px)]"></div>
+
+              
       </div>
-      {/* <div className="absolute top-0 left-0 w-full h-[100vh] flex justify-center product-pin-section ">
-          <div className="relative lg:w-[500px] lg:h-[500px] md:w-[250px] md:h-[280px] w-[280px] h-[250px] productWrapperRef">
-            <Image
-              ref={productWrapperRef}
-              className="object-contain"
-              src="/bottle.png"
-              fill
-              alt="Product"
-            />
-          </div>
-        </div> */}
+
+      <div className="absolute top-0 left-0 h-[calc(100vh-64px)] w-full flex justify-center items-end" >
+        <div className="relative w-full max-w-[1200px] md:max-w-[900px] sm:max-w-[700px] aspect-[1396/686] mx-auto">
+          <Image
+            ref={handRef}
+            className="object-contain object-bottom"
+            src="/hand.avif"
+            fill
+            alt="Product"
+          />
+        </div>
+
+        </div>
+
     </section>
   );
 };
